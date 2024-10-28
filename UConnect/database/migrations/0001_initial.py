@@ -45,7 +45,7 @@ class Migration(migrations.Migration):
                 ('written_text', models.CharField(max_length=6000)),
                 ('recency_score', models.IntegerField()),
                 ('publish_datetime', models.DateTimeField()),
-                ('author', models.ForeignKey(on_delete=django.db.models.deletion.CASCADE, to='posts.user')),
+                ('author', models.ForeignKey(on_delete=django.db.models.deletion.CASCADE, to='database.user')),
             ],
         ),
         migrations.CreateModel(
@@ -53,7 +53,7 @@ class Migration(migrations.Migration):
             fields=[
                 ('id', models.BigAutoField(auto_created=True, primary_key=True, serialize=False, verbose_name='ID')),
                 ('sender_id', models.IntegerField()),
-                ('recipient_id', models.ForeignKey(on_delete=django.db.models.deletion.CASCADE, to='posts.userpost')),
+                ('recipient_id', models.ForeignKey(on_delete=django.db.models.deletion.CASCADE, to='database.userpost')),
             ],
         ),
         migrations.CreateModel(
@@ -61,7 +61,7 @@ class Migration(migrations.Migration):
             fields=[
                 ('id', models.BigAutoField(auto_created=True, primary_key=True, serialize=False, verbose_name='ID')),
                 ('tag_id', models.IntegerField()),
-                ('user', models.ForeignKey(on_delete=django.db.models.deletion.CASCADE, to='posts.user')),
+                ('user', models.ForeignKey(on_delete=django.db.models.deletion.CASCADE, to='database.user')),
             ],
         ),
     ]
