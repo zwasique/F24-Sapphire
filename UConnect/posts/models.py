@@ -24,14 +24,16 @@ class UserTagMapping(models.Model):
 	user = models.ForeignKey(User, on_delete=models.CASCADE)
 	tag_id = models.IntegerField()
 	
-class UserTags(models.Model):
+class UserTag(models.Model):
 	name = models.CharField(max_length=15)
 
 class Inbox(models.Model):
 	recipient_id = models.ForeignKey(UserPost, on_delete=models.CASCADE)
 	sender_id = models.IntegerField() # should this be mapped to user as well
+	class Meta:
+		verbose_name_plural = "Inboxes"
 
-class Messages(models.Model):
+class Message(models.Model):
 	message_id = models.IntegerField()
 	time_sent = models.DateTimeField()
 	message_content = models.CharField(max_length=600)
