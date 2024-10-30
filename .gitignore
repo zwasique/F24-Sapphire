@@ -19,3 +19,9 @@ gradle-app.setting
 .project
 # JDT-specific (Eclipse Java Development Tools)
 .classpath
+# pycache
+**/__pycache__/
+# venv
+**/venv/
+# database (possibly we want to track this later?)
+db.sqlite3
