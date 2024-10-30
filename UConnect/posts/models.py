@@ -5,6 +5,7 @@ class User(models.Model): # made this singular because one object does not conta
 	school_email = models.EmailField()
 	password = models.CharField(max_length=60) # with authentification does uconnect need to store this??
 	# user_tags = models.ForeignKey(UserTagMapping, on_delete=models.CASCADE)
+	biography = models.CharField(max_length=1000, default="This user has thus far opted to maintain an air of mystery.") # check it out i added something please write me a good peer review
 	def __str__(self):
 		return self.school_email
 	
