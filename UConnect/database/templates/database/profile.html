@@ -1,0 +1,10 @@
+<!-- temporary filler profile; will just show name and bio for now -->
+
+{% extends 'database/base.html' %}
+
+{% block content %}
+    {% for x in profile %}
+
+        {{x.name}}
+    {% endfor %}
+{% endblock %}
