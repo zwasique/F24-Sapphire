@@ -1,10 +1,9 @@
-<!-- temporary filler profile; will just show name and bio for now -->
+<!-- ChatGPT wrote everything inside block content -->
 
 {% extends 'database/base.html' %}
 
 {% block content %}
-    {% for x in profile %}
-
-        {{x.name}}
-    {% endfor %}
+    <p>First Name: {{ profile.first_name }}</p>
+    <p>Last Name: {{ profile.last_name }}</p>
+    <p>Biography: {{ profile.biography }}</p>
 {% endblock %}

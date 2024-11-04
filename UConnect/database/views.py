@@ -25,14 +25,14 @@ def profile_form(request):
     return render(request, "database/profilecreation.html", {"form": form})
 
 def profile(request):
-    first_name = User.objects.get(pk=3)
-    last_name = User.objects.get(pk=4)
-    biography = User.objects.get(pk=5)
+    # ChatGPT code start
+    user = User.objects.get(pk=1)
 
     context={
-        'first_name':first_name,
-        'last_name':last_name,
-        'biography':biography
+        'first_name': user.first_name,
+        'last_name': user.last_name,
+        'biography': user.biography
     }
+    # ChatGPT code end
 
     return render(request, "database/profile.html", {'profile': context})    
