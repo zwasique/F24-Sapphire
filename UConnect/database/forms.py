@@ -10,7 +10,3 @@ class CreatePost(forms.Form):
     # project tags, seeking tags (guys i'm inclined to just have one field for these.)
     post_body = forms.CharField(
         label="Project Description: ", max_length=4000, help_text="Visit the Home Page if you need an example")
-
-
-class SetProfile(forms.Form):
-    pass
