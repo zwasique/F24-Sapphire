@@ -1,0 +1,251 @@
+﻿User
+school_email: ehopkins1@school.edu //LAUNCHER
+password: izayfyxu
+biography: “Hi everyone! I’m Eloise, a cybersecurity student in my junior year. I’m excited to join some projects!”
+
+
+UserPost
+author: Eloise Hopkins
+project_name: Red vs Blue Team Simulated Exercise
+num_required: 6
+project_length: 1
+written_text: “Hi everyone! I’d like to do a red vs. blue team exercise with a simulated phishing attack. I’ve set up some VMs; red team will try to compromise the system while blue team will try to defend the system. I think it’d be a great way for us to gain experience in developing offensive and defensive skills. I’m looking for 6-8 people, including myself.”
+post_tags: cybersecurity, personal
+
+
+Message
+message_content: “Hi Eloise, I was looking at your project and it looks really interesting. I have some questions I’d like to ask. First, how long do you expect the project to take?” //received
+
+
+---------------------------------------------------------------------------------------------------------------------
+
+
+User
+school_email: aphels2@school.edu //LAUNCHER
+password: swim2004!
+biography: “Arman. SchoolU ‘26”
+
+
+UserPost
+author: Arman Phelps
+project_name: Research on Wearable Tech and Exercise
+num_required: 2
+project_length: 4
+written_text: “I’m conducting a survey on how fitness trackers and smartwatches like Fitbits and Apple Watches impact exercise and health behavior. I’d like to work with two other students to conduct this experiment over three months, then another month after to analyze our results.”
+post_tags: exercise_science, statistics, research
+
+
+Message
+message_content: “Yeah I can send over what I had in mind, what’s your discord username?” //sent
+
+
+---------------------------------------------------------------------------------------------------------------------
+
+
+User
+school_email: mhenry3@school.edu //SEEKER
+password: marine!folk
+biography: “mollie here, undergraduate student with an interest in all things ocean and marine life (but i’m actually studying information technology)!”
+
+
+Message
+message_content: “Hi Eloise, I was reading your post and I’d like to join your project” //sent
+
+
+---------------------------------------------------------------------------------------------------------------------
+
+
+User:
+school_email: tverran4@school.edu //SEEKER
+password: fT5hQ9zD
+biography: “Hey, I’m Tom. I make digital art for characters, backgrounds, items- anything you want, I’ll do. My passion is in video games, so I’m game for any of that kind of work. I produce logos, do basic animation, and make event flyers. I’m proficient with a few different styles: minimalist and pixel art, mainly. The further you go from pixel art, the further out of my realm you get. Still willing to give it a shot, though - looking forward to exchanging messages.”
+
+
+Message
+message_content: “Hey there. I have some... drawings ready for the project. Let me know what you think when you get a chance.” //sent
+
+
+---------------------------------------------------------------------------------------------------------------------
+
+
+User:
+school_email: sali5@school.edu //LAUNCHER
+password: Pr0jectL@unch!!
+biography: “I’m Sana, a visual fine arts major specializing in digital art. If you’d like a link to my art portfolio, shoot me a message!”
+
+
+UserPost
+author: Sana Ali
+project_name: Fitness Event Poster
+num_required: 2
+project_length: 2
+written_text: “I’d like to work with someone on promotional posters for an on-campus fitness event. The event is on September 13th from 12 PM to 3 PM. We’re looking to put these up in high traffic areas around campus, with two to three different designs. The poster size would be 24x36.”
+post_tags: graphic_design, print_media
+
+
+Message
+message_content: “I can come up with some design ideas for you. I will need to know the size.” //sent
+
+
+---------------------------------------------------------------------------------------------------------------------
+
+
+User:
+school_email: asmith6@school.edu //LAUNCHER
+password: cantrilginap
+biography: “My name is Ariella Smith and I am a senior in early childhood education. I’m working towards becoming a kindergarten teacher and I have been a student assistant with the CLRC for two semesters. I am CPR, AED, and First Aid certified.”
+
+
+UserPost
+author: Ariella Smith
+project_name: Interactive Experiences for CLRC Research Project
+num_required: 1
+project_length: 3
+written_text: “Hello! My name is Ariella. I’m pursuing a Bachelor’s in Early Childhood Education and I want to run an experiment on how interactive experiences increase retention for pre-k and kindergarten students. ODU’s Children’s Learning & Research Center has allowed me to perform my experiment with their students in August as long as everything is finalised by July 30th. I need an artist to help create interactive elements. I was thinking of something like a pop-up book, but I’m definitely open to coming up with other options. I would need the final product to be finished by early to mid July. You would be working with another childhood psychology student to ensure the design worked well with the experiment.”
+recency_score
+#post_tags: graphic_design, print_media, 
+publish_datetime
+
+
+UserPost
+author: Ariella Smith
+project_name: CLRC Research Project/Experiment
+num_required: 1
+project_length: 3
+written_text: “Hello! My name is Ariella. I’m pursuing a Bachelor’s in Early Childhood Education and I want to run an experiment on how interactive experiences increase retention for pre-k and kindergarten students. ODU’s Children’s Learning & Research Center has allowed me to perform my experiment with their students in August as long as everything is finalised by July 30th. I want a psychology student, ideally versed in child psychology, who can help me formalize the experiment, and who understands the ethical requirements in experiments on children. I would also want them with me in August conducting the experiment.”
+post_tags: research, undergraduate, psychology, childhood_psychology, ethics
+
+
+Message
+message_content: “Hey I think a pop up book would be a good idea, but I’m not sure about distributing a pop up book to each child. Maybe something smaller? Or maybe doing the lesson through an interactive game?” //received
+
+
+---------------------------------------------------------------------------------------------------------------------
+
+
+User:
+school_email: gwirrak7@school.edu //LAUNCHER
+password: pass12341234
+biography: “Student by day, gamer by night.”
+
+
+UserPost
+author: Gene Wirrak
+project_name: In need of pixel art for four characters
+num_required: 4
+project_length: 3
+written_text: “I’m working on developing a video game, and I need pixel art models of four of the characters in the game. These models will need to be in different poses, expression, and stages of motion (standing, walking, running, sitting, etc). I have three months to develop these models. I’m looking for a team of four people to work on these models - one person per character. Imagine your name in the end credits!”
+post_tags: game_design, game_studies, digital_art
+
+
+Message
+message_content: “Hi, I’m interested in your project! I actually specialize in pixel art and I can show you some examples if you want. I’ve been doing pixel art since I was in middle school and I’m studying game design too” //received
+
+
+---------------------------------------------------------------------------------------------------------------------
+
+
+User:
+school_email: zfitzpatrick8@school.edu //SEEKER
+password: 1media3even6provide8
+biography: “What’s up! I’m Zack. I’m a marketing student. If you need help marketing your product, website, event, whatever, I’m your guy! Looking forward to joining some groups.”
+
+
+---------------------------------------------------------------------------------------------------------------------
+
+
+User:
+school_email: llin9@school.edu //LAUNCHER
+password: 3guy5spring5material83
+biography: “My name is Leah Lin. I’m a creative writing student, but I dabble with website building in my free time. I’m curious to see what kind of projects are on here!”
+
+
+UserPost
+author: Leah Lin
+project_name: Looking for actors for a one act play
+num_required: 6
+project_length: 1
+written_text: “I finished writing a one-act play, and I’d like to actually see it performed. I need six actors. It would take less than a month to rehearse and perform.”
+post_tags: theatre, performance
+
+
+Message
+message_content: “This is a one-act play. It should only take about 20 minutes to perform in full” //sent
+
+
+---------------------------------------------------------------------------------------------------------------------
+
+
+User:
+school_email: dyoung10@school.edu //LAUNCHER
+password: 4tend1beyond0rest235
+biography: “Undergraduate student studying computer science. Familiar with Java, C++, and Rust. Currently learning Python and Perl. Tutor at the Tutoring Center.”
+
+
+UserPost
+author: Doris-Ann Young
+project_name: App for allergen-friendly restaurants
+num_required: 4
+project_length: 6
+written_text: “I’m looking to develop an application for eople with allergies or specific dietary restrictions to find restaurants that have restriction-friendly menus. The application would allow users to filter by dietary restriction and/or allergen before visiting to see what their options are. In addition to viewing the restriction-friendly sections of the menu, the user would also be able to see if the restaurant can accommodate and modify other dishes. I’d like to work with around 4 other people on this, but this number may change depending on individual skillsets/experience level. I’d like to get this app up and running in about 6 months. 
+post_tags: application_development, computer_science, database
+
+
+Message
+message_content: “how much experience do you have working w databases?” //sent
+
+
+---------------------------------------------------------------------------------------------------------------------
+
+
+User:
+school_email: yallen11@school.edu //LAUNCHER
+password: nspecrescona
+biography: “I'm Yahya, a theater major conjuring up characters and chasing my dreams”
+
+
+UserPost
+author: Yahya Allen
+project_name: Need props and extras for my play
+num_required: 2
+project_length: 1
+written_text: “URGENTLY need props and extras for my play next month! If you have any experience with production or set design, contact me immediately, as I’d love to work with you! I just need a few environmental pieces. Thanks!”
+post_tags: theatre, design, cinema_production
+
+
+Message
+message_content: “These props are exactly what I had in mind! Let’s meet at the dining hall at 4 to talk more about it.” //sent
+
+
+---------------------------------------------------------------------------------------------------------------------
+
+
+User:
+school_email: avaldez12@school.edu //LAUNCHER
+password: getureneofei
+biography: “My name is Alex and I like making websites. Join me on my projects!”
+
+
+UserPost
+author: Alex Valdez
+project_name: Website to find the best spots to visit in the state
+num_required: 4
+project_length: 6
+written_text: “I’m looking to create a website of the best, or underrated, attractions, parks, and lookout spots. People could filter by the type of place they’re looking for (museum, park, lookout, etc) and look at pictures and reviews other people have posted. Based on information I’ve gathered, I think the project will take 6 months and I’ll need four more team members. If you’re interested, message me!
+post_tags: web_programming, personal
+
+
+Message
+message_content: “yeah that sounds good, I’ll add you to the group chat we have going for the project. excited to hear more about the ideas you have for the website!”
+
+
+---------------------------------------------------------------------------------------------------------------------
+
+
+// the first group of post tags describes the “type” of project the user is creating, while the second (much larger) group of tags was created from undergrad/grad degrees that ODU currently offers. there is no real separation between the two groups, it’s only for clarity. //
+
+
+undergraduate, graduate, doctoral, research, laboratory, interview, survey, experiment, academic, personal
+
+
+accounting, african_american_studies, african_studies, applied_linguistics, english_second_language, teaching_english_second_language, applied_sociology, art_history, visual_fine_arts, asian_studies, athletic_training, biochemistry, biochemistry_research, microbiology_immunology, biomedical_sciences, prehealth, marine_biology, biology_education, biology, bioelectrics, bioinformatics_genomics, biological_chemistry, business_admin, business_analytics, economics, finance, marketing, project_management, chemistry, chemistry_education, civil_engineering, clinical_psychology, communication, cinema_tv_production, media_studies, applied_mathematics, biostatistics, data_science, computer_engineering, modeling_and_simulation, computer_science, information_technology, counseling, creative_writing, fiction, non_fiction, poetry, criminal_justice, criminology, cybersecurity, AI, cybercrime, machine_learning, dental_hygiene, early_childhood_education, ecological_sciences, education, special_education, electrical_engineering, engineering_management, aerospace_engineering, biomedical_engineering, environmental_engineering, mechanical_engineering, english, literature_compostion, technical_writing, journalism, environmental_health, exercise_science, fine_arts, art_education_museums, graphic_design, painting_drawing, photography, print_media, geography, urban_planning, health_sciences, recreational_planning, history, human_services, application_development, database, ebusiness_ecommerce, network_engineering, information_system_technology, game_studies, game_design, leadership, professional_writing, international_studies, kinesiology_rehabilitation, library_information_studies, digital_communication, entrepreneurship, human_resource_management, international_business, management, maritime_trade, digital_marketing, actuarial_mathematics, mathematics, big_data_analytics, mathematics_education, medical_laboratory_science, laboratory_science, ROTC, music_education, music_composition, music_performance, music_education, vocal_performance, sound_recording, naval_science, nuclear_medicine_technology, nursing, midwifery, post_licensure, pre_licensure, occupational_technical_studies, ocean_earth_science, oceanography, park_recreation_tourism_studies, hospitality_management, park_recreation_management, philosophy, political_legal_studies, religious_studies, physical_education, coaching, physical_therapy, physics, astrophysics, physics_education, political_science, global_politics, psychology, health_psychology, organizational_psychology, public_administration, non_profit,  public_health, health_services_administration,  reading, secondary_education, sociology, social_welfare, speech_language_pathology, audiology, sport_management, theatre, dance, cinema_production, design_technology, performance, womens_studies, world_languages, world_cultures, french, german, japanese, spanish, arabic, chinese_studies, film_studies, jewish_studies, latin_american_studies, middle_eastern_studies, occupational_safety, web_programming, digital_forensics, childhood_psychology, ethics, digital_art, design
