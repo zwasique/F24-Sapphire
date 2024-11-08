@@ -1,0 +1,18 @@
+<!-- For whoever is working on the front end of the site, this would be where we could put an intro page or something, this is just filler.-->
+
+{% extends 'database/base.html' %}
+
+{% block content %}
+
+    <h1>User Posts</h1>
+    
+    {% for post in post_list %}
+        <strong>{{ post.project_name }} by {{ post.author }} - Requires {{ post.num_required }} Seekers</strong>
+        <ul>
+        {{ post.written_text }}
+        
+        </ul>
+    {% endfor %}    
+    
+
+{% endblock %}
