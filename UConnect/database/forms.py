@@ -1,4 +1,7 @@
 from django import forms
+from django.forms import ModelForm
+
+from .models import User
 
 
 class CreatePost(forms.Form):
@@ -13,9 +16,12 @@ class CreatePost(forms.Form):
         widget=forms.Textarea)
 
 # class for making a user's profile; the forms should get the user's first and last name as well as biography
-class ProfileForm(forms.Form):
+class ProfileForm(ModelForm):
     school_email = forms.EmailField()
     password = forms.CharField(widget=forms.PasswordInput)
     first_name = forms.CharField(label="First name", max_length=50)
     last_name = forms.CharField(label="Last name", max_length=50)
     biography = forms.CharField(label="Biography", widget=forms.Textarea)
+    class Meta:
+        model = User
+        fields = ['school_email', 'password', 'first_name', 'last_name', 'biography']

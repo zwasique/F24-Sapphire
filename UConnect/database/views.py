@@ -9,14 +9,10 @@ def home(request):
 
 def profile_form(request):
     if request.method == "POST":
-        first_name = ProfileForm.first_name(request.POST)
-        last_name = ProfileForm.last_name(request.POST)
-        user_biography = ProfileForm.biography(request.POST)
+        form = ProfileForm(request.POST)
 
         if form.is_valid():
-            User.first_name = first_name
-            User.last_name = last_name
-            User.biography = user_biography
+            form.save()
             return HttpResponseRedirect("/profile/") #will redirect to the profile page if form is valid
         
     else:
