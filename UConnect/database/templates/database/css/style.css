@@ -1,3 +1,8 @@
+/*
+
+Having navbar display issues so remaking a simple version, should be easy to integrate into bootstrap stuff, basically would just be changing names-Tyger
+
+
 ul {
   list-style-type: none;
   margin: 0;
@@ -24,11 +29,45 @@ li a:hover:not(#active) {
 
 #active {
   background-color: #D3D3D3;
+} */
+
+
+
+/* Tyger dirty fix navbar, ill add comments so we can just copy the colors. brown version stuff. code is similar/somewhat referenced from team website*/
+
+body {
+
+	background-color: #e6d6cc; /*like a soft orange color*/
+	color: #1c1c1c; /*text color a darker shade of brown*/
+	font-family: Arial, Helvetica, sans-serif; /*copied caidens text type*/
+	text-align: center;
+	margin-right: 8%;
+	margin-left: 8%;
 }
+
+.navbar {
+  background-color: #4a2b21; /* like the base navbar color so it should be a darker brown*/
+  overflow: scroll; /* let the user scroll through the nav bar options incase theyre super zoomed in*/
+}
+
+.navbar a { /*this is like the "buttons" on the navbar, im making it the same color as the background so its more seemless looking*/
+  float: left; /*puts the elements on the left side*/
+  color: #ededed; /* off white text color*/
+  text-align: center; /*centers the text*/
+  padding: 16px 16px; /* space between the text and the border of the "button"*/
+  font-size: 1em; /* so the page can be resied and the text will look ok, its about 17px*/
+}
+.navbar a:hover {
+  background-color: #825840; /* a ligher shade of brown*/
+  color: #1c1c1c; /*text color a darker shade of brown*/
+}
+
+
 
 .footer {
 font-size: 1em;
-clear: both;
+background-color:  #4a2b21; /*same color as navbar*/
+color: #ededed; /* off white text color*/
 width: 100%;
 text-align: center;
 }
