@@ -19,5 +19,8 @@ from . import views
 urlpatterns = [
     path('', views.home, name="home"),
     path('profilecreation/', views.profile_form, name="profile_form"),
-    path('profile/', views.profile, name="profile")
+    path('profile/', views.profile, name="profile"),
+    path('postcreation/', views.create_post, name="create_post"),
+    # path('inbox/', views.inbox, name="inbox"),
+    # path('search/', views.search, name="search")
 ]
