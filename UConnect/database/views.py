@@ -2,6 +2,7 @@ from django.http import HttpResponseRedirect
 from django.shortcuts import render
 
 from .forms import ProfileForm
+from .forms import CreatePost
 from .models import User
 
 def home(request):
@@ -32,3 +33,16 @@ def profile(request):
     # ChatGPT code end
 
     return render(request, "database/profile.html", {'profile': context})    
+
+def create_post(request):
+    if request.method == "POST":
+        form = CreatePost(request.POST)
+
+        if form.is_valid():
+            form.save()
+            return HttpResponseRedirect("/profile/") # eventually want this to be search page
+
+    else:
+        form = CreatePost()
+
+    return render(request, "database/createpost.html", {"form": form})
