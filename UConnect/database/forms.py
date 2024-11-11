@@ -4,7 +4,7 @@ from django.forms import ModelForm
 from .models import User
 
 
-class CreatePost(forms.Form):
+class CreatePost(ModelForm):
     project_name = forms.CharField(label="Project Name: ", max_length=50, help_text="Focus on what the project does")
     number_sought = forms.IntegerField(
         label="Desired Number of Seekers: ", min_value=1, max_value=15, help_text="No more than 15")
