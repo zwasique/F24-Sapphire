@@ -6,7 +6,13 @@ from .forms import CreatePost
 from .models import User
 
 def home(request):
-    return render(request, 'database/home.html', {})
+    return render(request, 'database/Index.html', {})
+
+def posts(request):
+    return render(request, 'database/posts.html')
+
+def launch(request):
+    return render(request, 'database/launch.html')
 
 def profile_form(request):
     if request.method == "POST":
