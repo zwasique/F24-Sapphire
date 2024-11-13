@@ -27,6 +27,9 @@ class UserPost(models.Model):  # made this sinfular
     recency_score = models.IntegerField()
     publish_datetime = models.DateTimeField()
 
+    def __str__(self):
+        return self.author
+
 
 class Tag(
     models.Model
@@ -49,9 +52,6 @@ class PostTagMapping(models.Model):
 class Conversation(models.Model):
     post_id = models.ForeignKey(UserPost, on_delete=models.CASCADE)
     seeker_id = models.ForeignKey(User, on_delete=models.CASCADE)
-
-    class Meta:
-        verbose_name_plural = "Inboxes"
 
 
 class Message(models.Model):
