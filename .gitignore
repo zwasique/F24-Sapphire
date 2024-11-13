@@ -20,4 +20,6 @@ gradle-app.setting
 # JDT-specific (Eclipse Java Development Tools)
 .classpath
 # pycache
-*.pyc
+**/__pycache__/
+# venv
+**/venv/
