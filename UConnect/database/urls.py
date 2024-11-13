@@ -23,6 +23,6 @@ urlpatterns = [
     path('postcreation/', views.create_post, name="create_post"),
     path('posts/', views.posts, name="posts"),
     path('launch/', views.launch, name="launch"),
-    path('inbox/', views.inbox, name="inbox"),
-    # path('search/', views.search, name="search")
+    # path('inbox/', views.inbox, name="inbox"),
+    path('search/', views.search, name="search")
 ]
