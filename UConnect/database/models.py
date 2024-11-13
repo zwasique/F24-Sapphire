@@ -27,6 +27,9 @@ class UserPost(models.Model):  # made this sinfular
     recency_score = models.IntegerField()
     publish_datetime = models.DateTimeField()
 
+    def __str__(self):
+        return self.author
+
 
 class Tag(
     models.Model

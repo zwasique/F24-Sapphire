@@ -4,6 +4,7 @@ from django.shortcuts import render
 from .forms import ProfileForm
 from .forms import CreatePost
 from .models import User
+from .models import UserPost
 
 def home(request):
     return render(request, 'database/Index.html', {})
@@ -52,3 +53,8 @@ def create_post(request):
         form = CreatePost()
 
     return render(request, "database/createpost.html", {"form": form})
+
+def search(request):
+    post_list = UserPost.objects.all()
+    return render(request, 'database/search.html',
+                  {'post_list': post_list})
