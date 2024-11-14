@@ -52,7 +52,7 @@ def create_post(request):
     else:
         form = CreatePost()
 
-    return render(request, "database/createpost.html", {"form": form})
+    return render(request, "database/searching.html", {"form": form})
 
 def search(request):
     post_list = UserPost.objects.all()
