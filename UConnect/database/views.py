@@ -7,7 +7,7 @@ from .models import User
 from .models import UserPost
 
 def home(request):
-    return render(request, 'database/Index.html', {})
+    return render(request, 'database/pages/home.html', {})
 
 def posts(request):
     return render(request, 'database/posts.html')
