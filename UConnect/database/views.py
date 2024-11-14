@@ -42,7 +42,7 @@ def profile(request):
     }
     # ChatGPT code end
 
-    return render(request, "database/profile.html", {'profile': context})    
+    return render(request, "database/pages/profile.html", {'profile': context})
 
 def create_post(request):
     if request.method == "POST":
@@ -55,7 +55,7 @@ def create_post(request):
     else:
         form = CreatePost()
 
-    return render(request, "database/createpost.html", {"form": form})
+    return render(request, "database/pages/searching.html", {"form": form})
 
 def search(request):
     post_list = UserPost.objects.all()
