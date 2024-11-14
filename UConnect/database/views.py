@@ -6,8 +6,11 @@ from .forms import CreatePost
 from .models import User
 from .models import UserPost
 
+def login(request):
+    return render(request, 'database/pages/login.html', {})
+
 def home(request):
-    return render(request, 'database/Index.html', {})
+    return render(request, 'database/pages/home.html')
 
 def posts(request):
     return render(request, 'database/posts.html')
@@ -21,7 +24,7 @@ def profile_form(request):
 
         if form.is_valid():
             form.save()
-            return HttpResponseRedirect("../database/Index.html") #will redirect to the home page if form is valid, however, this doesn't work right now
+            return HttpResponseRedirect("database/pages/home.html") #will redirect to the home page if form is valid, however, this doesn't work right now
         
     else:
         form = ProfileForm()
