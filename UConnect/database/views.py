@@ -21,12 +21,12 @@ def profile_form(request):
 
         if form.is_valid():
             form.save()
-            return HttpResponseRedirect("/profile/") #will redirect to the profile page if form is valid
+            return HttpResponseRedirect("../database/Index.html") #will redirect to the home page if form is valid, however, this doesn't work right now
         
     else:
         form = ProfileForm()
     
-    return render(request, "database/profilecreation.html", {"form": form})
+    return render(request, "database/pages/signup.html", {"form": form})
 
 def profile(request):
     # ChatGPT code start
