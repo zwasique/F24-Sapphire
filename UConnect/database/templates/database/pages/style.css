@@ -29,7 +29,7 @@ textarea{
 	float: left;
 	padding: 0;
     margin: 0; 
-	background: #281f11;
+	background: #5C4033;
 }
 
 #navbar li img {
@@ -63,13 +63,31 @@ textarea{
 	color: #0f0d0b;
 	text-decoration: none;
 }
+
+a:link {
+	font-family: Arial, Helvetica, sans-serif;
+	color: #6F8FAF;
+	text-decoration: underline;
+	}
+	a:visited {
+	color: #6F8FAF;
+	}
+	a:hover {
+	background: #0000FF;
+}
+
+/*Change the color of the active page in the nav bar*/
+#active {
+	background-color: #D3D3D3;
+}
+
 /* === FOOTER SECTION === */
 #footer{
 	position: relative;
 	left: 0%;
 	bottom: 0%;
 	width: 100%;
-	background-color: #281f11;
+	background-color: #5C4033;
 	color: white;
 	text-align: center;
 	padding: 0;
