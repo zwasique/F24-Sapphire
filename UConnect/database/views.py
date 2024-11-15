@@ -18,6 +18,9 @@ def launch(request):
 def account(request):
     return render(request, 'database/pages/account.html')
 
+def inbox(request):
+    return render(request, 'database/pages/inbox.html')
+
 def profile_form(request):
     if request.method == "POST":
         form = ProfileForm(request.POST)
