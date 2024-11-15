@@ -15,6 +15,9 @@ def posts(request):
 def launch(request):
     return render(request, 'database/pages/launch.html')
 
+def account(request):
+    return render(request, 'database/pages/account.html')
+
 def profile_form(request):
     if request.method == "POST":
         form = ProfileForm(request.POST)
@@ -58,3 +61,4 @@ def search(request):
     post_list = UserPost.objects.all()
     return render(request, 'database/pages/search.html',
                   {'post_list': post_list})
+
