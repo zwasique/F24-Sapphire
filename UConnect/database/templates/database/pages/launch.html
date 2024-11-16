@@ -1,13 +1,19 @@
+{% load static %}
+
 <!DOCTYPE html>
+<head>
+  <link rel="stylesheet" href="{% static '/css/style.css' %}">
+  <title>UConnect - Launch</title>
+  <link rel="icon" type="image/x-icon" href="{% static '/images/logo.svg' %}">
+</head>
 <header>
-    <link rel="stylesheet" href="style.css">
 	<nav><div id="navbar">
 			<ul>
-				<li><a href="home.html"><img src="images/logo.svg" alt="logo">Home</a></li>
-        <li><a href="searching.html">Search</a></li>
-				<li class="active"><a href="launch.html">Launch</a></li>
-				<li><a href="inbox.html">Inbox</a></li>
-      	<li><a href="account.html">My Account</a></li>
+				<li class="active"><a href="/home"><img src="{% static '/images/logo.svg' %}" alt="logo">Home</a></li>
+        <li><a href="/search">Search</a></li>
+				<li><a href="/launch">Launch</a></li>
+				<li><a href="/inbox">Inbox</a></li>
+        <li style="float:right"><a href="/account">My Account</a></li>
 			</ul>
 	</div></nav>
         <body>
@@ -110,14 +116,14 @@
                   Number of people needed:<br>
                   <input type="text" name="numAmount" value="..."><br>
                   Description:<br>
-                  <textarea name="description" rows="10" columns="90"></textarea><br><br>
+                  <textarea style="width: 40%; height: 10%;" name="description" rows="10" columns="90"></textarea><br><br>
                   Post:<br>
                   <input type="submit" value="Launch!">
                 </fieldset>
               </form>
 
-                 
               
+           
         </body>
     <nav><div id="footer">
         <br><p>Team Sapphire 2024, Old Domionion University CS411W Project</p><br>     
