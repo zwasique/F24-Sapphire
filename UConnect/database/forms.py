@@ -23,11 +23,12 @@ class ProfileForm(ModelForm):
     last_name = forms.CharField(label="Last name", max_length=50)
     biography = forms.CharField(label="Biography", widget=forms.Textarea)
     tag1 = forms.ModelMultipleChoiceField(label= "(required) First tag", queryset=Tag.objects.all())
-    tag2 = forms.ModelMultipleChoiceField(label= "(optional) Second tag", queryset=Tag.objects.all())
-    tag3 = forms.ModelMultipleChoiceField(label= "(optional) Third tag", queryset=Tag.objects.all())
-    tag4 = forms.ModelMultipleChoiceField(label= "(optional) Fourth tag", queryset=Tag.objects.all())
-    tag5 = forms.ModelMultipleChoiceField(label= "(optional) Fifth tag", queryset=Tag.objects.all())
-    tag6 = forms.ModelMultipleChoiceField(label= "(optional) Sixth tag", queryset=Tag.objects.all())
+    tag2 = forms.ModelMultipleChoiceField(label= "(optional) Second tag", queryset=Tag.objects.all(), required=False)
+    tag3 = forms.ModelMultipleChoiceField(label= "(optional) Third tag", queryset=Tag.objects.all(), required=False)
+    tag4 = forms.ModelMultipleChoiceField(label= "(optional) Fourth tag", queryset=Tag.objects.all(), required=False)
+    tag5 = forms.ModelMultipleChoiceField(label= "(optional) Fifth tag", queryset=Tag.objects.all(), required=False)
+    tag6 = forms.ModelMultipleChoiceField(label= "(optional) Sixth tag", queryset=Tag.objects.all(), required=False)
+    #currently still adding every tag to every user, need to figure that one out
     class Meta:
         model = User
         fields = ['school_email', 'password', 'first_name', 'last_name', 'biography']
