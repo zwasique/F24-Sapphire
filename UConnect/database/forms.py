@@ -2,7 +2,7 @@ from django import forms
 from django.forms import ModelForm
 
 from .models import User
-
+from .models import Tag
 
 class CreatePost(ModelForm):
     project_name = forms.CharField(label="Project Name: ", max_length=50, help_text="Focus on what the project does")
@@ -22,6 +22,12 @@ class ProfileForm(ModelForm):
     first_name = forms.CharField(label="First name", max_length=50)
     last_name = forms.CharField(label="Last name", max_length=50)
     biography = forms.CharField(label="Biography", widget=forms.Textarea)
+    tag1 = forms.ModelMultipleChoiceField(label= "(required) First tag", queryset=Tag.objects.all())
+    tag2 = forms.ModelMultipleChoiceField(label= "(optional) Second tag", queryset=Tag.objects.all())
+    tag3 = forms.ModelMultipleChoiceField(label= "(optional) Third tag", queryset=Tag.objects.all())
+    tag4 = forms.ModelMultipleChoiceField(label= "(optional) Fourth tag", queryset=Tag.objects.all())
+    tag5 = forms.ModelMultipleChoiceField(label= "(optional) Fifth tag", queryset=Tag.objects.all())
+    tag6 = forms.ModelMultipleChoiceField(label= "(optional) Sixth tag", queryset=Tag.objects.all())
     class Meta:
         model = User
         fields = ['school_email', 'password', 'first_name', 'last_name', 'biography']
