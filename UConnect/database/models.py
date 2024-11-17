@@ -1,5 +1,13 @@
 from django.db import models
 
+#moved tag to the top since other classes will use it
+class Tag(
+    models.Model
+):  # Changed to just "Tag" since it seems we're using a single tag pool for posts/users
+    
+    name = models.CharField(max_length=15)
+    def __str__(self):
+        return self.name
 
 class User(
     models.Model
@@ -14,6 +22,7 @@ class User(
         max_length=1000,
         default="This user has thus far opted to maintain an air of mystery.",
     )  # check it out i added something please write me a good peer review
+    tags = models.ManyToManyField(Tag)
 
     def __str__(self):
         return self.school_email
@@ -30,12 +39,6 @@ class UserPost(models.Model):  # made this sinfular
     def __str__(self):
         return self.author
 
-
-class Tag(
-    models.Model
-):  # Changed to just "Tag" since it seems we're using a single tag pool for posts/users
-    name = models.CharField(max_length=15)
-    #tags = ["Programming", "Art"] (this could be wrong)
 
 class UserTagMapping(models.Model):
     # This is an Association Table; enables many-to-many between Users and Tags
