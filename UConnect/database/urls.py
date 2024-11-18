@@ -17,12 +17,13 @@ Including another URLconf
 from django.urls import path
 from . import views 
 urlpatterns = [
-    path('', views.home, name="home"),
-    path('profilecreation/', views.profile_form, name="profile_form"),
-    path('profile/', views.profile, name="profile"),
-    path('postcreation/', views.create_post, name="create_post"),
-    path('posts/', views.posts, name="posts"),
-    path('launch/', views.launch, name="launch"),
-    # path('inbox/', views.inbox, name="inbox"),
-    path('search/', views.search, name="search")
+    path('', views.login, name="login"),
+    path('pages/signup', views.profile_form, name="profile_form"),
+    path('pages/account/', views.profile, name="profile"),
+    path('pages/launch/', views.create_post, name="create_post"),
+    path('pages/searching/', views.posts, name="posts"),
+    path('pages/launch/', views.launch, name="launch"),
+    # path('pages/inbox/', views.inbox, name="inbox"),
+    path('pages/home', views.home, name="home")
+
 ]

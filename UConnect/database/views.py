@@ -6,8 +6,11 @@ from .forms import CreatePost
 from .models import User
 from .models import UserPost
 
+def login(request):
+    return render(request, 'database/pages/login.html', {})
+
 def home(request):
-    return render(request, 'database/Index.html', {})
+    return render(request, 'database/pages/home.html')
 
 def posts(request):
     return render(request, 'database/posts.html')
@@ -21,12 +24,12 @@ def profile_form(request):
 
         if form.is_valid():
             form.save()
-            return HttpResponseRedirect("/profile/") #will redirect to the profile page if form is valid
+            return HttpResponseRedirect("database/pages/home.html") #will redirect to the home page if form is valid, however, this doesn't work right now
         
     else:
         form = ProfileForm()
     
-    return render(request, "database/profilecreation.html", {"form": form})
+    return render(request, "database/pages/signup.html", {"form": form})
 
 def profile(request):
     # ChatGPT code start
@@ -39,7 +42,7 @@ def profile(request):
     }
     # ChatGPT code end
 
-    return render(request, "database/profile.html", {'profile': context})    
+    return render(request, "database/pages/profile.html", {'profile': context})
 
 def create_post(request):
     if request.method == "POST":
@@ -52,7 +55,7 @@ def create_post(request):
     else:
         form = CreatePost()
 
-    return render(request, "database/createpost.html", {"form": form})
+    return render(request, "database/pages/searching.html", {"form": form})
 
 def search(request):
     post_list = UserPost.objects.all()

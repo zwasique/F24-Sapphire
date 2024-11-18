@@ -5,25 +5,24 @@
             <h1 style="text-align:center;">Here is where you sign up for an account!</h1>
             <br><br>
             <center>
-            <form action="/action_page.php">
-                <fieldset>
-                  <legend>Sign Up:</legend>
-                  Email:<br>
-                  <input type="text" name="email" value="Student@edu"><br>
-                  First name:<br>
-                  <input type="text" name="firstname" value="Student"><br>
-                  Last name:<br>
-                  <input type="text" name="lastname" value="Student"><br>
-                  Password:<br>
-                  <input type="text" name="password" value="Password"><br>
-                  <input type="submit" value="Log In!">
-                </fieldset>
-              </form></center>
+                <div>
+                    <form method="post">
+                    {% csrf_token %}
+                    {% for field in form %}
+                        <div class="fieldWrapper">
+                            {{ field.errors }}
+                            {{ field.label_tag }} {{ field }}
+                        </div>
+                        {% endfor %}
+                        <input type = "submit" value="Sign Up!">
+                    </form>
+                </div>
+            </center>
         </body>
     <nav><div id="footer">
-        <br><p>Team Sapphire 2024, Old Domionion University CS411W Project</p><br>     
-        <p><a href="https://github.com/zwasique/F24-Sapphire/tree/main">Prototype Github</a></p>
-        <p><a href="https://github.com/clars002/411-UConnect-website">Team Sapphire Github</a></p>    
+        <br><p>Team Sapphire 2024, Old Dominion University CS411W Project</p><br>
+        <p><a href="https://github.com/zwasique/F24-Sapphire/tree/main">Prototype GitHub</a></p>
+        <p><a href="https://github.com/clars002/411-UConnect-website">Team Sapphire GitHub</a></p>
         <p><a href="https://clars002.github.io/411-UConnect-website/">Team Sapphire Website</a></p>   
     </div></nav>
 </header>
