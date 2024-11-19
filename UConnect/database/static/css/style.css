@@ -1,0 +1,89 @@
+/*=== BODY SECTION ===*/
+#body{
+	background-color: #D2B48C;
+	font-family: Arial, Helvetica, sans-serif;
+	color:#0f0d0b;
+	padding: 0;
+    margin: 0; 
+}
+
+p {
+	font-size: 20px;
+}
+
+/* === NAVBAR SECTION === */
+#navbar{
+	position: relative;
+  	left: 0;
+ 	top: 0;
+  	width: 100%;
+	float: left;
+	padding: 0;
+    margin: 0; 
+	background-color: #281f11;
+}
+	
+#navbar ul{
+	text-align: center;
+	float: left;
+	padding: 0;
+    margin: 0; 
+	background: #281f11;
+}
+
+#navbar li img {
+    height: 60px; /* match the size of the other "buttons" */
+    width: auto;  /* should just work out i think */
+    vertical-align: middle; /* center align */
+	list-style-type: none;
+}
+	
+#navbar li{
+	padding: 0;
+	margin: 0;
+	float: left;
+	list-style-type: none;
+}
+	
+#navbar li a, #navbar li span{
+	display: inline-block; /* do not chnage this to float as it makes black dots appear in the nav bar for some reason?*/
+	padding: 0em 1.5em; /*em should keep it to scale as its zoomed in/out*/
+	text-decoration: none;
+	font-family: Arial, Helvetica, sans-serif;
+	line-height: 60px;
+}
+	
+#navbar li a{
+	color: #f7ede5;
+}
+	
+#navbar li:hover a, #navbar li span{
+	background: #8d7260;
+	color: #0f0d0b;
+	text-decoration: none;
+}
+
+.navbar-right {
+	float: right
+}
+/* === FOOTER SECTION === */
+#footer{
+	position: relative;
+	left: 0%;
+	bottom: 0%;
+	width: 100%;
+	background-color: #281f11;
+	color: white;
+	text-align: center;
+	padding: 0;
+    margin: 0; 
+}
+
+/* === LINK SECTION === */
+a:link {
+	color: white;
+}
+
+a:visited {
+	color: plum;
+}
