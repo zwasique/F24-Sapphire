@@ -22,7 +22,7 @@ class User(
         max_length=1000,
         default="This user has thus far opted to maintain an air of mystery.",
     )  # check it out i added something please write me a good peer review
-    tags = models.ManyToManyField(Tag)
+    tags = models.ManyToManyField(Tag, max_length=6)
 
     def __str__(self):
         return self.school_email
