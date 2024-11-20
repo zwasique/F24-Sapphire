@@ -93,3 +93,8 @@ a:link {
 a:visited {
 	color: plum;
 }
+
+th, td {
+  padding-left: 7px;
+  padding-right: 7px;
+}
