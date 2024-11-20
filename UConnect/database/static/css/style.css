@@ -1,6 +1,6 @@
 /*=== BODY SECTION ===*/
 body{
-	background-color: #D2B48C;
+	background-color: #8cb1d2;
 	font-family: Arial, Helvetica, sans-serif;
 	color:#0f0d0b;
 	padding: 0;
@@ -20,7 +20,7 @@ p {
 	float: left;
 	padding: 0;
     margin: 0; 
-	background-color: #281f11;
+	background-color: #362312;
 }
 	
 #navbar ul{
@@ -28,7 +28,7 @@ p {
 	float: left;
 	padding: 0;
     margin: 0; 
-	background: #281f11;
+	background: #362312;
 }
 
 #navbar li img {
@@ -68,8 +68,8 @@ p {
 }
 
 /*Active class*/
-#active {
-	background-color: #D3D3D3;
+.active {
+	background-color: #00A86B;
   }
 
 /* === FOOTER SECTION === */
@@ -78,7 +78,7 @@ p {
 	left: 0%;
 	bottom: 0%;
 	width: 100%;
-	background-color: #281f11;
+	background-color: #362312;
 	color: white;
 	text-align: center;
 	padding: 0;
