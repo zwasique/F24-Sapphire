@@ -1,5 +1,5 @@
 /*=== BODY SECTION ===*/
-#body{
+body{
 	background-color: #D2B48C;
 	font-family: Arial, Helvetica, sans-serif;
 	color:#0f0d0b;
@@ -71,7 +71,7 @@ p {
 #active {
 	background-color: #D3D3D3;
   }
-  
+
 /* === FOOTER SECTION === */
 #footer{
 	position: relative;
