@@ -66,6 +66,12 @@ p {
 .navbar-right {
 	float: right
 }
+
+/*Active class*/
+#active {
+	background-color: #D3D3D3;
+  }
+  
 /* === FOOTER SECTION === */
 #footer{
 	position: relative;
