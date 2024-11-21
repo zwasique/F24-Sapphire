@@ -30,13 +30,13 @@ class User(
 
 
 class UserPost(models.Model):  # made this sinfular
-    author = models.ForeignKey(User, on_delete=models.CASCADE)
     project_name = models.CharField(max_length=30)
     num_required = models.IntegerField()
-    length = models.IntegerField(default=6) # expected length of the project in months (added for parity with CreatePost form)
+    project_length = models.IntegerField(default=6) # expected length of the project in months (added for parity with CreatePost form)
     written_text = models.CharField(max_length=6000)
-    recency_score = models.IntegerField()
-    publish_datetime = models.DateTimeField()
+    author = models.ForeignKey(User, on_delete=models.CASCADE, default="no_user")
+    recency_score = models.IntegerField(default=0)
+    publish_datetime = models.DateTimeField(null=True)
 
     def __str__(self):
         return self.author
