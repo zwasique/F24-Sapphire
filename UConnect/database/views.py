@@ -26,7 +26,7 @@ def profile_form(request):
 
         if form.is_valid():
             form.save()
-            return HttpResponseRedirect("database/pages/home.html") #will redirect to the home page if form is valid, however, this doesn't work right now
+            return HttpResponseRedirect("../home") #will redirect to the home page if form is valid, however, this doesn't work right now
         
     else:
         form = ProfileForm()
