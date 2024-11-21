@@ -33,13 +33,13 @@ class UserPost(models.Model):  # made this sinfular
     project_name = models.CharField(max_length=30)
     num_required = models.IntegerField()
     project_length = models.IntegerField(default=6) # expected length of the project in months (added for parity with CreatePost form)
-    written_text = models.CharField(max_length=6000)
-    author = models.ForeignKey(User, on_delete=models.CASCADE, default="no_user")
+    post_body = models.CharField(max_length=4096, default="No post body.")
+    author = models.ForeignKey(User, on_delete=models.CASCADE, null=True)
     recency_score = models.IntegerField(default=0)
     publish_datetime = models.DateTimeField(null=True)
 
     def __str__(self):
-        return self.author
+        return self.project_name
 
 
 class UserTagMapping(models.Model):

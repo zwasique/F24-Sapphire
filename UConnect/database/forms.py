@@ -12,7 +12,7 @@ class PostForm(ModelForm):
         label="Expected Project Length", min_value=0, max_value=24, help_text="Estimated length of project in months")
     # project tags, seeking tags (guys i'm inclined to just have one field for these.)
     post_body = forms.CharField(
-        label="Project Description: ", max_length=4000, help_text="Visit the Home Page if you need an example",
+        label="Project Description: ", max_length=4096, help_text="Visit the Home Page if you need an example",
         widget=forms.Textarea)
     class Meta:
         model = UserPost
