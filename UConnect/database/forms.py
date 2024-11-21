@@ -22,13 +22,8 @@ class ProfileForm(ModelForm):
     first_name = forms.CharField(label="First name", max_length=50)
     last_name = forms.CharField(label="Last name", max_length=50)
     biography = forms.CharField(label="Biography", widget=forms.Textarea)
-    tag1 = forms.ModelChoiceField(label= "(required) First tag", queryset=Tag.objects.all())
-    tag2 = forms.ModelChoiceField(label= "(optional) Second tag", queryset=Tag.objects.all(), required=False)
-    tag3 = forms.ModelChoiceField(label= "(optional) Third tag", queryset=Tag.objects.all(), required=False)
-    tag4 = forms.ModelChoiceField(label= "(optional) Fourth tag", queryset=Tag.objects.all(), required=False)
-    tag5 = forms.ModelChoiceField(label= "(optional) Fifth tag", queryset=Tag.objects.all(), required=False)
-    tag6 = forms.ModelChoiceField(label= "(optional) Sixth tag", queryset=Tag.objects.all(), required=False)
-    #currently still adding every tag to every user, need to figure that one out
+    tags = forms.ModelMultipleChoiceField(label="Select up to 6 tags.", queryset=Tag.objects.all(), widget=forms.CheckboxSelectMultiple)
+    #to do: implement tag limit
     class Meta:
         model = User
-        fields = ['school_email', 'password', 'first_name', 'last_name', 'biography']
+        fields = ['school_email', 'password', 'first_name', 'last_name', 'biography', 'tags']
