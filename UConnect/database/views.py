@@ -10,13 +10,19 @@ def login(request):
     return render(request, 'database/pages/login.html', {})
 
 def home(request):
-    return render(request, 'database/pages/home.html')
+    return render(request, 'database/pages/home.html', {})
 
 def posts(request):
-    return render(request, 'database/posts.html')
+    return render(request, 'database/pages/posts.html')
 
 def launch(request):
-    return render(request, 'database/launch.html')
+    return render(request, 'database/pages/launch.html')
+
+def account(request):
+    return render(request, 'database/pages/account.html')
+
+def inbox(request):
+    return render(request, 'database/pages/inbox.html')
 
 def profile_form(request):
     if request.method == "POST":
@@ -42,7 +48,7 @@ def profile(request):
     }
     # ChatGPT code end
 
-    return render(request, "database/pages/profile.html", {'profile': context})
+    return render(request, "database/pages/profile.html", {'profile': context})    
 
 def create_post(request):
     if request.method == "POST":
@@ -59,5 +65,6 @@ def create_post(request):
 
 def search(request):
     post_list = UserPost.objects.all()
-    return render(request, 'database/search.html',
+    return render(request, 'database/pages/search.html',
                   {'post_list': post_list})
+

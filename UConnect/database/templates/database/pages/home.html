@@ -1,13 +1,21 @@
+{% load static %}
+
 <!DOCTYPE html>
+<head>
+    <link rel="stylesheet" href="{% static '/css/style.css' %}">
+    <title>UConnect - Home</title>
+    <link rel="icon" type="image/x-icon" href="{% static '/images/logo.svg' %}">
+</head>
 <header>
-    <link rel="stylesheet" href="style.css">
 	<nav><div id="navbar">
 			<ul>
-				<li class="active"><a href="home.html"><img src="images/logo.svg" alt="logo">Home</a></li>
-                <li><a href="searching.html">Search</a></li>
-				<li><a href="launch.html">Launch</a></li>
-				<li><a href="inbox.html">Inbox</a></li>
-            	<li><a href="account.html">My Account</a></li>
+				<li class="active"><a href="/home"><img src="{% static '/images/logo.svg' %}" alt="logo">Home</a></li>
+                <li><a href="/search">Search</a></li>
+				<li><a href="/launch">Launch</a></li>
+				<li><a href="/inbox">Inbox</a></li>
+                <div class = "navbar-right">
+            	<li><a href="/account">My Account</a></li>
+                </div>
 			</ul>
 	</div></nav>
         <body>
