@@ -1,13 +1,7 @@
 from django.contrib import admin
 
-from .models import User
-from .models import UserPost
-from .models import Tag
-from .models import UserTagMapping
-from .models import PostTagMapping
-from .models import Conversation
-from .models import Message
-
+from .models import (Conversation, Message, PostTagMapping, Tag, User,
+                     UserPost, UserTagMapping)
 
 admin.site.register(User)
 admin.site.register(UserPost)
