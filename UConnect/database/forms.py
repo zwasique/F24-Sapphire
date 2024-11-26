@@ -3,6 +3,7 @@ from django.forms import ModelForm
 
 from .models import User
 from .models import Tag
+# from .models import
 
 class CreatePost(ModelForm):
     project_name = forms.CharField(label="Project Name: ", max_length=50, help_text="Focus on what the project does")
@@ -32,3 +33,17 @@ class ProfileForm(ModelForm):
     class Meta:
         model = User
         fields = ['school_email', 'password', 'first_name', 'last_name', 'biography']
+
+
+
+
+# class ProfileTags(ModelForm):
+#     tag1 = forms.ModelChoiceField(label= "(required) First tag", queryset=Tag.objects.all())
+#     tag2 = forms.ModelChoiceField(label= "(optional) Second tag", queryset=Tag.objects.all(), required=False)
+#     tag3 = forms.ModelChoiceField(label= "(optional) Third tag", queryset=Tag.objects.all(), required=False)
+#     tag4 = forms.ModelChoiceField(label= "(optional) Fourth tag", queryset=Tag.objects.all(), required=False)
+#     tag5 = forms.ModelChoiceField(label= "(optional) Fifth tag", queryset=Tag.objects.all(), required=False)
+#     tag6 = forms.ModelChoiceField(label= "(optional) Sixth tag", queryset=Tag.objects.all(), required=False)
+#     class Meta:
+#       model = UserTagMapping
+#       fields = ['tag1, tag2, tag3, tag4, tag5, tag6']
