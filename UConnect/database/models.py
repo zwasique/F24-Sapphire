@@ -28,7 +28,7 @@ class UserPost(models.Model):  # made this sinfular
     publish_datetime = models.DateTimeField()
 
     def __str__(self):
-        return self.author
+        return self.project_name
 
 
 class Tag(
