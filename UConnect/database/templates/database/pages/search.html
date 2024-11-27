@@ -110,47 +110,14 @@
                 </fieldset>
               </form>
               <br><br>
-              <p>Here is an example to how it may look</p>
-              <table>
-                <tr>
-                  <th>Student name</th>
-                  <th>Seeking for</th>
-                  <th>Tag 1</th>
-                  <th>Tag 2</th>
-                  <th>Tag 3</th>
-                </tr>
-                <tr>
-                  <td>Student001</td>
-                  <td>2</td>
-                  <td>Game design</td>
-                  <td>Programming</td>
-                  <td>Map design</td>
-                </tr>
-              </table>
-              <h3>Description:</h3><br>
-              <p>I want to make a video game!</p>
-              
-                <hr>
-              
-              <table>
-                <tr>
-                  <th>Student name</th>
-                  <th>Seeking for</th>
-                  <th>Tag 1</th>
-                  <th>Tag 2</th>
-                  <th>Tag 3</th>
-                </tr>
-                <tr>
-                  <td>Student002</td>
-                  <td>5</td>
-                  <td>Art</td>
-                  <td>Paint</td>
-                  <td>Creative</td>
-                </tr>
-              </table>
-              <h3>Description:</h3><Br>
-                <p>I want to make a poster!</p>
+              {% for post in post_list %}
+                <h2><span style="color:#000080">{{ post.project_name }}</span> by <span style="color:#d1c8a5">{{ post.author }}</span> - Requires 
+                  <span style="color:#362312">{{ post.num_required }} Seekers</span></h2>
+                <div class="post-class">
+                {{ post.written_text }}
                 </div>
+              {% endfor %} 
+  </div>
            <br><br><br>
         </body>
     <nav><div id="footer">

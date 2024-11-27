@@ -11,6 +11,9 @@ p {
 	font-size: 20px;
 }
 
+div.post-body {
+	font-size: 10px; 
+}
 /* === NAVBAR SECTION === */
 #navbar{
 	position: relative;
