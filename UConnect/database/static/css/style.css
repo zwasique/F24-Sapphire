@@ -14,6 +14,42 @@ p {
 div.post-body {
 	font-size: 10px; 
 }
+
+input[type=submit]{
+		background-color: #FFFFFF;
+		color: #25170a;
+		border: 2px solid #362312; 
+		font-size:16px;
+		padding: 10px 20px; 
+		cursor: pointer;
+		text-align: center;
+		border-radius: 5px;
+}
+
+input[type=submit]:hover{
+	background-color: #362312;
+	color: #FFFFFF;
+}
+
+input[type=text]{
+		background-color: #FFFFFF;
+		color: #25170a;
+		border: 2px solid #362312; 
+		font-size:16px;
+		padding: 5px 10px; 
+		border-radius: 5px;
+}
+
+textarea{
+	background-color: #f9f9f9;
+	color: #25170a;
+	border: 3px solid #362312; 
+	font-size:16px;
+	padding: 10px 20px; 
+	box-shadow:5px 5px #396993;
+	resize: none; 
+}
+
 /* === NAVBAR SECTION === */
 #navbar{
 	position: relative;
