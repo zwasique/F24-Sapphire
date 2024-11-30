@@ -50,6 +50,42 @@ textarea{
 	resize: none; 
 }
 
+.project-name{
+	color:#000000; 
+	background-color:#F9F9F9; 
+	padding: 10px 15px; 
+	border-radius: 5px;
+	border: 2px solid #362312; 
+	font-size:30px;
+}
+
+.post-author{
+	color:#000000;
+	background-color:#F9F9F9; 
+	padding: 5px 10px; 
+	border-radius: 5px;
+	border: 2px solid #362312; 
+	font-size:17px;
+}
+
+.num-required{
+	color:#000000;
+	background-color:#F9F9F9; 
+	padding: 5px 10px; 
+	border-radius: 5px;
+	border: 2px solid #362312; 
+	font-size:17px;
+}
+
+.post-class{
+	color:#000000;
+	background-color:#F9F9F9; 
+	padding: 5px 10px; 
+	border-radius: 5px;
+	border: 2px solid #362312; 
+	font-size:15px;
+}
+
 /* === NAVBAR SECTION === */
 #navbar{
 	position: relative;

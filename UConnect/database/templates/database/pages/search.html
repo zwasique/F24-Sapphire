@@ -111,11 +111,12 @@
               </form>
               <br><br>
               {% for post in post_list %}
-                <h2><span style="color:#000080">{{ post.project_name }}</span> by <span style="color:#d1c8a5">{{ post.author }}</span> - Requires 
-                  <span style="color:#362312">{{ post.num_required }} Seekers</span></h2>
+                <h2><span class="project-name">{{ post.project_name }}</span>  <span class="post-author">Launcher: {{ post.author }}</span>
+                  <span class="num-required">{{ post.num_required }} Seekers</span></h2>
                 <div class="post-class">
                 {{ post.written_text }}
                 </div>
+                <hr>
               {% endfor %} 
   </div>
            <br><br><br>
