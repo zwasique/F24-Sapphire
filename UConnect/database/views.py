@@ -2,7 +2,7 @@ from django.http import HttpResponseRedirect
 from django.shortcuts import render
 
 from .forms import PostForm, ProfileForm
-from .models import User, UserPost
+from .models import User, UserPost, Conversation, Message
 
 
 def login(request):
@@ -17,8 +17,10 @@ def posts(request):
 def account(request):
     return render(request, 'database/pages/account.html')
 
-def inbox(request):
-    return render(request, 'database/pages/inbox.html')
+def inbox(request): 
+    user = User.objects.get(id=request.user.id)
+    messages = user.get_messages()
+    return render(request, 'database/pages/inbox.html', {'messages': messages})
 
 def profile_form(request):
     if request.method == "POST":

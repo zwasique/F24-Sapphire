@@ -1,4 +1,5 @@
 from django.db import models
+from django.utils import timezone
 
 
 #moved tag to the top since other classes will use it
@@ -27,6 +28,9 @@ class User(
 
     def __str__(self):
         return self.school_email
+    
+    def get_messages(self): #get all messages sent to user
+        return Message.objects.filter(recipient=self).order_by('-time_sent')
 
 
 class UserPost(models.Model):  # made this sinfular
@@ -55,16 +59,41 @@ class PostTagMapping(models.Model):
 
 
 class Conversation(models.Model):
-    post_id = models.ForeignKey(UserPost, on_delete=models.CASCADE)
-    seeker_id = models.ForeignKey(User, on_delete=models.CASCADE)
+    post_id = models.ForeignKey(UserPost, on_delete=models.CASCADE) #post user is messaging about
+    seeker_id = models.ForeignKey(User, on_delete=models.CASCADE) #seeker reaching out 
+    launcher_id = models.ForeignKey(User, on_delete=models.CASCADE) #launcher receiving message
+
+    def __str__(self): #return the project name
+        return f"{self.post_id.project_name}"
+    
+    def get_conversation(self): #get all messages in specific conversation
+        return self.message_set.order_by('time_sent')
 
 
 class Message(models.Model):
-    conversation_id = models.ForeignKey(
-        Conversation, on_delete=models.CASCADE, null=True
-    )  # Conversation to which it belongs
-    author = models.ForeignKey(
-        User, on_delete=models.CASCADE, null=True
-    )  # Who sent the message; I think null=True allows null so we don't need a default
+    conversation_id = models.ForeignKey(Conversation, on_delete=models.CASCADE, null=True)  # Conversation to which it belongs
+    sender = models.ForeignKey(User, on_delete=models.CASCADE, null=True)  # Who sent the message; I think null=True allows null so we don't need a default
+    recipient = models.ForeignKey(User, on_delete=models.CASCADE, null=True)  # who received message
+    subject = models.CharField() #subject line --> project being messaged about
     time_sent = models.DateTimeField()
-    message_content = models.CharField(max_length=600)
+    message_content = models.TextField() #TextField for multiline, better for msg/comment type strings (?)
+    
+    def __str__(self):
+        return f"Message from {self.sender} to {self.recipient} at {self.time_sent}"
+
+    def send_message(self, from_sender, to_recipient, message_content, post):
+        conversation, created = Conversation.objects.get_or_create(
+            post_id = post,
+            seeker_id = from_sender,
+            launcher_id = to_recipient
+        )
+        message = Message(
+            conversation_id = conversation,
+            sender = from_sender,
+            recipient = to_recipient,
+            subject = post.project_name, #subject line = project name of post
+            time_sent = timezone.now(),
+            message_content = message_content
+        )
+        message.save()
+        return message
