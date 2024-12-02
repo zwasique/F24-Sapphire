@@ -49,17 +49,9 @@ def launch(request):
 
 
 def profile(request):
-    # ChatGPT code start
-    user = User.objects.get(pk=1)
+    user = User.objects.get(pk=1) # For now just retrieves first user in db, ideally we can specify it per request
 
-    context={
-        'first_name': user.first_name,
-        'last_name': user.last_name,
-        'biography': user.biography
-    }
-    # ChatGPT code end
-
-    return render(request, "database/pages/profile.html", {'profile': context})    
+    return render(request, "database/pages/account.html", {'user': user})    
 
 def create_post(request):
     if request.method == "POST":

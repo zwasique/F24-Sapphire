@@ -28,6 +28,6 @@ urlpatterns = [
     path('launch/', views.launch, name="launch"),
     path('inbox/', views.inbox, name="inbox"),
     path('search/', views.display_posts, name="search"),
-    path('account/', views.display_users, name="account"),
+    path('account/', views.profile, name="account"),
     path('login/', views.login, name="login"),
 ]
