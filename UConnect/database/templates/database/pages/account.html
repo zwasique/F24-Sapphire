@@ -18,7 +18,25 @@
 	</div></nav>
         <body>
             <h1 style="text-align:center;">Here is where you view your account!</h1>
-            <br><br>
+                <tr>
+                    <th>Name</th>
+                    <th>Email</th>
+                    <th>Biography</th>
+                </tr>
+            {% for user in users %}
+# this should list every user. eventually we should have a line functionally equivalent to "if user is logged in".
+# ideally it's stored locally so that a person only ever sees their own account and all other accounts are marked as
+# logged off. maybe we should have a line on the sign in page that's like active user = school_email. then here we can
+# be like "if active_user == [school_email]: display contents of user"
+                <tr>
+                    <td>{{ user.first_name }}
+                    {{ user.last_name }}</td>
+                    <td>{{ user.school_email }}</td>
+                    <td>{{ user.biography }}</td>
+                </tr>
+
+
+            <br><br><br><br><br>
             <form action="/action_page.php">
                 <fieldset>
                   <legend>Edit Profile:</legend>
