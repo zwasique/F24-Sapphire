@@ -1,7 +1,7 @@
 from django import forms
 from django.forms import ModelForm
 
-from .models import Tag, User, UserPost
+from .models import Tag, User, UserPost, Message
 
 
 class PostForm(ModelForm):
@@ -30,3 +30,10 @@ class ProfileForm(ModelForm):
     class Meta:
         model = User
         fields = ['school_email', 'password', 'first_name', 'last_name', 'biography', 'tags']
+
+#class for sending a message
+class MessageForm(ModelForm):
+    message_content = forms.CharField(widget=forms.Textarea, label="Message")
+    class Meta:
+        model = Message
+        fields = ['message_content']
