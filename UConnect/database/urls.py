@@ -30,5 +30,4 @@ urlpatterns = [
     path('search/', views.search, name="search"),
     path('account/', views.account , name="account"),
     path('login/', views.login, name="login"),
-    # path('display-users/', views.display_users, name="display_users"),
 ]

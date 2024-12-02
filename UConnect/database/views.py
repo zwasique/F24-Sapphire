@@ -82,6 +82,11 @@ def search(request):
 
 def display_users(request):
     users = User.objects.all()
-    return render(request, 'database/pages/display_users.html', {'users': users})
+    return render(request, 'database/pages/account.html', {'users': users})
 # credit: https://medium.com/@biswajitpanda973/how-to-fetch-all-data-from-database-using-django-87d4e1951931
+
+
+def display_posts(request):
+    posts = UserPost.objects.all()
+    return render(request, 'database/pages/search.html', {'posts': posts})
 
