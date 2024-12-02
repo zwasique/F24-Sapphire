@@ -155,8 +155,8 @@ textarea{
 
 /* === FOOTER SECTION === */
 #footer{
-	position: relative;
-	margin-top: -180px;
+	position: absolute;
+	height: 40px;
 	left: 0%;
 	bottom: 0%;
 	width: 100%;
