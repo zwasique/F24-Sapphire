@@ -17,12 +17,14 @@
 			</ul>
 	</div></nav>
         <body>
+            <br>
             <h1 style="text-align:center;">Here is where you search for posts and users!</h1>
             <br><br>
             <form action="/action_page.php">
                 <fieldset>
-                  <legend>Search:</legend>
-                  Select Search Tags:<br>
+                  <legend>Search</legend>
+                  <strong>Select Search Tags:</strong><br>
+                  <div class="custom-select-options" style="width=200px">
                   <select name="tag1">
                     <option value="none">None</option>
                     <option value="art">Art</option>
@@ -106,57 +108,24 @@
                     <option value="research">Research</option>
                     <option value="writing">Writing</option>
                     <option value="theater">Theater</option><br><br>
+                  </div>
                   <input type="submit" value="Search!">
                 </fieldset>
               </form>
               <br><br>
-              <p>Here is an example to how it may look</p>
-              <table>
-                <tr>
-                  <th>Student name</th>
-                  <th>Seeking for</th>
-                  <th>Tag 1</th>
-                  <th>Tag 2</th>
-                  <th>Tag 3</th>
-                </tr>
-                <tr>
-                  <td>Student001</td>
-                  <td>2</td>
-                  <td>Game design</td>
-                  <td>Programming</td>
-                  <td>Map design</td>
-                </tr>
-              </table>
-              <h3>Description:</h3><br>
-              <p>I want to make a video game!</p>
-              
-                <hr>
-              
-              <table>
-                <tr>
-                  <th>Student name</th>
-                  <th>Seeking for</th>
-                  <th>Tag 1</th>
-                  <th>Tag 2</th>
-                  <th>Tag 3</th>
-                </tr>
-                <tr>
-                  <td>Student002</td>
-                  <td>5</td>
-                  <td>Art</td>
-                  <td>Paint</td>
-                  <td>Creative</td>
-                </tr>
-              </table>
-              <h3>Description:</h3><Br>
-                <p>I want to make a poster!</p>
+              {% for post in post_list %}
+                <h2><span class="project-name">{{ post.project_name }}</span>  <span class="post-author">Launcher: {{ post.author }}</span>
+                  <span class="num-required">{{ post.num_required }} Seekers</span></h2>
+                <div class="post-class">
+                {{ post.written_text }}
                 </div>
-           <br><br><br>
+                <hr>
+              {% endfor %} 
         </body>
     <nav><div id="footer">
-        <br><p>Team Sapphire 2024, Old Dominion University CS411W Project</p><br>
-        <p><a href="https://github.com/zwasique/F24-Sapphire/tree/main">Prototype Github</a></p>
-        <p><a href="https://github.com/clars002/411-UConnect-website">Team Sapphire Github</a></p>    
-        <p><a href="https://clars002.github.io/411-UConnect-website/">Team Sapphire Website</a></p>   
+            Team Sapphire 2024, Old Dominion University • CS411W Project<br>     
+            <a href="https://github.com/zwasique/F24-Sapphire/tree/main">Prototype Github</a> • 
+            <a href="https://github.com/clars002/411-UConnect-website">Team Sapphire Github</a> • 
+            <a href="https://clars002.github.io/411-UConnect-website/">Team Sapphire Website</a>
     </div></nav>
 </header>
