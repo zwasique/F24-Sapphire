@@ -26,10 +26,3 @@ gradle-app.setting
 
 # jetbrains files
 .idea/
-
-# db file(s)
-db.sqlite3
-*.sqlite3
-
-# migrations
-**/migrations/
