@@ -1,5 +1,6 @@
 from django.db import models
 
+
 #moved tag to the top since other classes will use it
 class Tag(
     models.Model
@@ -21,7 +22,7 @@ class User(
     biography = models.CharField(
         max_length=1000,
         default="This user has thus far opted to maintain an air of mystery.",
-    )  # check it out i added something please write me a good peer review
+    )
     tags = models.ManyToManyField(Tag, max_length=6)
 
     def __str__(self):
@@ -29,15 +30,16 @@ class User(
 
 
 class UserPost(models.Model):  # made this sinfular
-    author = models.ForeignKey(User, on_delete=models.CASCADE)
     project_name = models.CharField(max_length=30)
     num_required = models.IntegerField()
-    written_text = models.CharField(max_length=6000)
-    recency_score = models.IntegerField()
-    publish_datetime = models.DateTimeField()
+    project_length = models.IntegerField(default=6) # expected length of the project in months (added for parity with CreatePost form)
+    post_body = models.CharField(max_length=4096, default="No post body.")
+    author = models.ForeignKey(User, on_delete=models.CASCADE, null=True)
+    recency_score = models.IntegerField(default=0)
+    publish_datetime = models.DateTimeField(null=True)
 
     def __str__(self):
-        return self.author
+        return self.project_name
 
 
 class UserTagMapping(models.Model):
