@@ -11,6 +11,81 @@ p {
 	font-size: 20px;
 }
 
+div.post-body {
+	font-size: 10px; 
+}
+
+input[type=submit]{
+		background-color: #FFFFFF;
+		color: #25170a;
+		border: 2px solid #362312; 
+		font-size:16px;
+		padding: 10px 20px; 
+		cursor: pointer;
+		text-align: center;
+		border-radius: 5px;
+}
+
+input[type=submit]:hover{
+	background-color: #362312;
+	color: #FFFFFF;
+}
+
+input[type=text]{
+		background-color: #FFFFFF;
+		color: #25170a;
+		border: 2px solid #362312; 
+		font-size:16px;
+		padding: 5px 10px; 
+		border-radius: 5px;
+}
+
+textarea{
+	background-color: #f9f9f9;
+	color: #25170a;
+	border: 3px solid #362312; 
+	font-size:16px;
+	padding: 10px 20px; 
+	box-shadow:5px 5px #396993;
+	resize: none; 
+}
+
+.project-name{
+	color:#000000; 
+	background-color:#F9F9F9; 
+	padding: 10px 15px; 
+	border-radius: 5px;
+	border: 2px solid #362312; 
+	font-size:30px;
+}
+
+.post-author{
+	color:#000000;
+	background-color:#F9F9F9; 
+	padding: 5px 10px; 
+	border-radius: 5px;
+	border: 2px solid #362312; 
+	font-size:17px;
+}
+
+.num-required{
+	color:#000000;
+	background-color:#F9F9F9; 
+	padding: 5px 10px; 
+	border-radius: 5px;
+	border: 2px solid #362312; 
+	font-size:17px;
+}
+
+.post-class{
+	color:#000000;
+	background-color:#F9F9F9; 
+	padding: 5px 10px; 
+	border-radius: 5px;
+	border: 2px solid #362312; 
+	font-size:15px;
+}
+
 /* === NAVBAR SECTION === */
 #navbar{
 	position: relative;
@@ -74,7 +149,7 @@ p {
 
 /* === FOOTER SECTION === */
 #footer{
-	position: relative;
+	position: fixed;
 	left: 0%;
 	bottom: 0%;
 	width: 100%;
