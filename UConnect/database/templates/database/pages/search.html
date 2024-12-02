@@ -21,7 +21,7 @@
 
             <!-- i think we need a div so that we can put this portion on the right side or something -->
             <tr>
-                <th>Name</th>
+                <th>POSTS:</th>
                 <!-- <th>tags</th> -->
             </tr>
             {% for post in posts %}
@@ -33,6 +33,17 @@
                     <td>{{ post.author }}</td>
                     <td>{{ post.publish_datetime }}</td>
                 </tr>
+            {% endfor %}
+            <tr>
+                <th>USERS:</th>
+                <!-- <th>tags</th> -->
+            </tr>
+            {% for user in users %}
+            <tr>
+                <td>{{ user.first_name }}</td>
+                <td>{{ user.last_name }}</td>
+                <td>{{ user.biography }}</td>
+            </tr>
             {% endfor %}
             <br><br>
             <form action="/action_page.php">

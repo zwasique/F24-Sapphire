@@ -88,5 +88,6 @@ def display_users(request):
 
 def display_posts(request):
     posts = UserPost.objects.all()
-    return render(request, 'database/pages/search.html', {'posts': posts})
+    users = User.objects.all()
+    return render(request, 'database/pages/search.html', {'posts': posts, 'users': users})
 
