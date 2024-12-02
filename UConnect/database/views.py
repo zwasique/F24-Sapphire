@@ -1,10 +1,9 @@
 from django.http import HttpResponseRedirect
 from django.shortcuts import render
 
-from .forms import ProfileForm
-from .forms import CreatePost
-from .models import User
-from .models import UserPost
+from .forms import PostForm, ProfileForm
+from .models import User, UserPost
+
 
 def login(request):
     return render(request, 'database/pages/login.html', {})
@@ -14,9 +13,6 @@ def home(request):
 
 def posts(request):
     return render(request, 'database/pages/posts.html')
-
-def launch(request):
-    return render(request, 'database/pages/launch.html')
 
 def account(request):
     return render(request, 'database/pages/account.html')
@@ -30,12 +26,27 @@ def profile_form(request):
 
         if form.is_valid():
             form.save()
-            return HttpResponseRedirect("database/pages/home.html") #will redirect to the home page if form is valid, however, this doesn't work right now
+            return HttpResponseRedirect("../home") # Note: Use URLs based on urls.py rather than directly referencing html files
         
     else:
         form = ProfileForm()
     
     return render(request, "database/pages/signup.html", {"form": form})
+
+
+def launch(request):
+    if request.method == "POST":
+        form = PostForm(request.POST)
+
+        if form.is_valid():
+            form.save()
+            return HttpResponseRedirect("../home")
+
+    else:
+        form = PostForm()
+
+    return render(request, 'database/pages/launch.html', {"form": form})
+
 
 def profile(request):
     # ChatGPT code start
@@ -52,14 +63,14 @@ def profile(request):
 
 def create_post(request):
     if request.method == "POST":
-        form = CreatePost(request.POST)
+        form = PostForm(request.POST)
 
         if form.is_valid():
             form.save()
             return HttpResponseRedirect("/profile/") # eventually want this to be search page
 
     else:
-        form = CreatePost()
+        form = PostForm()
 
     return render(request, "database/pages/searching.html", {"form": form})
 
