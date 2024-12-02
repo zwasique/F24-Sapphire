@@ -113,15 +113,47 @@
                 </fieldset>
               </form>
               <br><br>
-              {% for post in post_list %}
-                <h2><span class="project-name">{{ post.project_name }}</span>  <span class="post-author">Launcher: {{ post.author }}</span>
-                  <span class="num-required">{{ post.num_required }} Seekers</span></h2>
-                <div class="post-class">
-                {{ post.written_text }}
+              
+              <!--start of containers-->
+              <div class="scrollable-container">
+                <!--<h1 style="text-align: center; text-decoration: underline; font-weight: bold; color: #362312;">Posts</h1><br>
+              -->
+                <div class="posts-section">
+                {% for post in post_list %}
+                <div class="post">
+                <h2>
+                <span class="project-name">{{ post.project_name }}</span>
+                <span class="post-author">Launcher: {{ post.author }}</span>
+                <span class="num-required">{{ post.num_required }} Seekers</span>
+                </h2>
+              <div class="post-class">
+              {{ post.written_text }}
+              </div>
+               <hr>
                 </div>
-                <hr>
-              {% endfor %} 
-        </body>
+             {% endfor %}
+            </div>
+
+
+            <div class="divider"></div> <!--line between the two sections ... tbc to form-->
+                <div class="users-section">
+                    <!--<h1 style="text-align: center; text-decoration: underline; font-weight: bold; color: #362312;">Users</h1><br>
+                -->
+                    <!-- Example users -->
+                    <div class="user">
+                        <h3>Student001</h3>
+                        <p>Looking for: 2 collaborators</p>
+                        <p>Tags: Programming, Design</p>
+                    </div>
+                    <div class="user">
+                        <h3>Student002</h3>
+                        <p>Looking for: 5 collaborators</p>
+                        <p>Tags: Art, Creativity</p>
+                    </div>
+            </div>
+          </div> <!--end of scroll containers-->
+        
+            </body>
     <nav><div id="footer">
             Team Sapphire 2024, Old Dominion University • CS411W Project<br>     
             <a href="https://github.com/zwasique/F24-Sapphire/tree/main">Prototype Github</a> • 
