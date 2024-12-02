@@ -158,8 +158,8 @@ textarea{
 	position: absolute;
 	height: 40px;
 	left: 0%;
+	right: 0%;
 	bottom: 0%;
-	width: 100%;
 	background-image: linear-gradient(to right,#362312, #422913);
 	color: white;
 	text-align: center;
