@@ -27,7 +27,7 @@ urlpatterns = [
     path('posts/', views.posts, name="posts"),
     path('launch/', views.launch, name="launch"),
     path('inbox/', views.inbox, name="inbox"),
-    path('search/', views.search, name="search"),
-    path('account/', views.account, name="account"),
+    path('search/', views.display_posts, name="search"),
+    path('account/', views.display_users, name="account"),
     path('login/', views.login, name="login"),
 ]
