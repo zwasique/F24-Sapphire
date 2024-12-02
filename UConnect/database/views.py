@@ -14,13 +14,11 @@ def home(request):
 def posts(request):
     return render(request, 'database/pages/posts.html')
 
-def account(request):
-    return render(request, 'database/pages/account.html')
-
 def inbox(request):
     return render(request, 'database/pages/inbox.html')
 
-def profile_form(request):
+
+def signup(request):
     if request.method == "POST":
         form = ProfileForm(request.POST)
 
@@ -48,38 +46,14 @@ def launch(request):
     return render(request, 'database/pages/launch.html', {"form": form})
 
 
-def profile(request):
+def account(request):
     user = User.objects.get(pk=1) # For now just retrieves first user in db, ideally we can specify it per request
 
     return render(request, "database/pages/account.html", {'user': user})    
 
-def create_post(request):
-    if request.method == "POST":
-        form = PostForm(request.POST)
-
-        if form.is_valid():
-            form.save()
-            return HttpResponseRedirect("/profile/") # eventually want this to be search page
-
-    else:
-        form = PostForm()
-
-    return render(request, "database/pages/searching.html", {"form": form})
 
 def search(request):
-    post_list = UserPost.objects.all()
-    return render(request, 'database/pages/search.html',
-                  {'post_list': post_list})
-
-
-def display_users(request):
-    users = User.objects.all()
-    return render(request, 'database/pages/account.html', {'users': users})
-# credit: https://medium.com/@biswajitpanda973/how-to-fetch-all-data-from-database-using-django-87d4e1951931
-
-
-def display_posts(request):
     posts = UserPost.objects.all()
     users = User.objects.all()
     return render(request, 'database/pages/search.html', {'posts': posts, 'users': users})
-
+# credit: https://medium.com/@biswajitpanda973/how-to-fetch-all-data-from-database-using-django-87d4e1951931

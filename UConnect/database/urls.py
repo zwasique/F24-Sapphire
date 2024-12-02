@@ -21,13 +21,11 @@ from . import views
 urlpatterns = [
     path('', views.login, name="login"),
     path('home/', views.home, name="home"),
-    path('signup/', views.profile_form, name="profile_form"),
-    path('profile/', views.profile, name="profile"),
-    path('postcreation/', views.create_post, name="create_post"),
+    path('signup/', views.signup, name="profile_form"),
     path('posts/', views.posts, name="posts"),
     path('launch/', views.launch, name="launch"),
     path('inbox/', views.inbox, name="inbox"),
-    path('search/', views.display_posts, name="search"),
-    path('account/', views.profile, name="account"),
+    path('search/', views.search, name="search"),
+    path('account/', views.account, name="account"),
     path('login/', views.login, name="login"),
 ]
