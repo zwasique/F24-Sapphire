@@ -1,6 +1,6 @@
 /*=== BODY SECTION ===*/
-#body{
-	background-color: #fff5ee;
+body{
+	background-color: #D2B48C;
 	font-family: Arial, Helvetica, sans-serif;
 	color:#0f0d0b;
 	padding: 0;
@@ -40,7 +40,7 @@
 	float: left;
 	list-style-type: none;
 }
-	
+
 #navbar li a, #navbar li span{
 	display: inline-block; /* do not chnage this to float as it makes black dots appear in the nav bar for some reason?*/
 	padding: 0em 1.5em; /*em should keep it to scale as its zoomed in/out*/
@@ -57,6 +57,10 @@
 	background: #8d7260;
 	color: #0f0d0b;
 	text-decoration: none;
+}
+
+.navbar-right {
+	float: right
 }
 
 a:link {
