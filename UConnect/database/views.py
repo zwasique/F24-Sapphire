@@ -34,6 +34,8 @@ def inbox(request):
     selected_conv = None 
     messages = []
 
+    form = MessageForm()
+
     #when user selects specific chat
     if request.GET.get('conversation_id'):
         conversation_id = request.GET.get('conversation_id')
@@ -49,7 +51,7 @@ def inbox(request):
         form = MessageForm(request.POST)
 
         if form.is_valid():
-            message_content = form
+            message_content = form.cleaned_data['message_content']
 
         message = Message(
             conversation_id = selected_conv,
@@ -68,6 +70,7 @@ def inbox(request):
         "inbox": conversation,
         "selected_conversation": selected_conv,
         "messages": messages,
+        "form" : form
     })
 
 def profile_form(request):
