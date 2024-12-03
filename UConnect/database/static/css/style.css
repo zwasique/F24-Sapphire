@@ -1,15 +1,96 @@
 /*=== BODY SECTION ===*/
-#body{
-	background-color: #D2B48C;
+body{
+	background-image: linear-gradient(#8cb1d2, #4c7191);
 	font-family: Arial, Helvetica, sans-serif;
 	color:#0f0d0b;
 	padding: 0;
     margin: 0; 
+	height: 100%;
+}
+
+html{
+	height: 100%;
 }
 
 p {
 	font-size: 20px;
 }
+
+div.post-body {
+	font-size: 10px; 
+}
+
+input[type=submit]{
+		background-color: #FFFFFF;
+		color: #25170a;
+		border: 2px solid #362312; 
+		font-size:16px;
+		padding: 10px 20px; 
+		cursor: pointer;
+		text-align: center;
+		border-radius: 5px;
+}
+
+input[type=submit]:hover{
+	background-color: #362312;
+	color: #FFFFFF;
+}
+
+input[type=text]{
+		background-color: #FFFFFF;
+		color: #25170a;
+		border: 2px solid #362312; 
+		font-size:16px;
+		padding: 5px 10px; 
+		border-radius: 5px;
+}
+
+textarea{
+	background-color: #f9f9f9;
+	color: #25170a;
+	border: 3px solid #362312; 
+	font-size:16px;
+	padding: 10px 20px; 
+	box-shadow:5px 5px #396993;
+	resize: none; 
+}
+
+.project-name{
+	color:#000000; 
+	background-color:#F9F9F9; 
+	padding: 10px 15px; 
+	border-radius: 5px;
+	border: 2px solid #362312; 
+	font-size:30px;
+}
+
+.post-author{
+	color:#000000;
+	background-color:#F9F9F9; 
+	padding: 5px 10px; 
+	border-radius: 5px;
+	border: 2px solid #362312; 
+	font-size:17px;
+}
+
+.num-required{
+	color:#000000;
+	background-color:#F9F9F9; 
+	padding: 5px 10px; 
+	border-radius: 5px;
+	border: 2px solid #362312; 
+	font-size:17px;
+}
+
+.post-class{
+	color:#000000;
+	background-color:#F9F9F9; 
+	padding: 5px 10px; 
+	border-radius: 5px;
+	border: 2px solid #362312; 
+	font-size:15px;
+}
+
 
 /* === NAVBAR SECTION === */
 #navbar{
@@ -20,15 +101,15 @@ p {
 	float: left;
 	padding: 0;
     margin: 0; 
-	background-color: #281f11;
+	background-image: linear-gradient(to right,#362312, #422913);
 }
 	
 #navbar ul{
 	text-align: center;
-	float: left;
 	padding: 0;
     margin: 0; 
-	background: #281f11;
+	background-image: linear-gradient(to right,#362312, #422913);
+	overflow: hidden;
 }
 
 #navbar li img {
@@ -66,16 +147,23 @@ p {
 .navbar-right {
 	float: right
 }
+
+/*Active class*/
+.active {
+	background-color: #664a37;
+  }
+
 /* === FOOTER SECTION === */
 #footer{
-	position: relative;
+	position: absolute;
+	height: 40px;
 	left: 0%;
+	right: 0%;
 	bottom: 0%;
-	width: 100%;
-	background-color: #281f11;
+	background-image: linear-gradient(to right,#362312, #422913);
 	color: white;
 	text-align: center;
-	padding: 0;
+	padding: 7px 7px;
     margin: 0; 
 }
 
@@ -86,4 +174,56 @@ a:link {
 
 a:visited {
 	color: plum;
+}
+
+th, td {
+  padding-left: 7px;
+  padding-right: 7px;
+}
+
+/* === SEARCH TAB SECTIONS :) GOD I HOPE THIS WORKS === */
+.scrollable-container {
+    display: flex;
+    flex-direction: row; /* boxes should be left-right*/
+    justify-content: space-between; /*add space cause it kinda clips*/
+    align-items: stretch; /*they should be the same tall size*/
+    background-color: #f7ede583; /* SEMI TRANSPARENT ...(translucent) lightish background color */
+    padding: 20px;
+    gap: 20px; /* Space between posts, divider, and users */
+}
+
+/*post part, think the content should be transferable from the database*/
+.posts-section {
+    flex: 2; /* the screen should be divided into 3rds so the posts are the largest third */
+    max-width: 66%;
+	/* ok taking away and adding back so it works
+	padding: 15px;
+    background-color: #97c2e9; /* slightly lighter blue than the background one */
+    /*border-radius: 5px; /*rounding it out lol*/
+    /*box-shadow: 0px 2px 4px rgba(0, 0, 0, 0.1); 
+    overflow-y: auto; /* so like scroll down...in place? might have to add fixed types *//*
+	*/
+}
+
+.users-section {
+    flex: 1;
+	max-width: 33%;
+    /*padding: 15px;
+    background-color: #97c2e9; /* slightly lighter blue than the background one */
+    /*border-radius: 5px;
+    overflow-y: auto; /* should only scroll up and down */
+}
+
+/* Divider line so it has some degree of seperation */
+.divider {
+    width: 4px; /*(all of this can be changed*/
+	flex-shrink: 0; /* shink issue??? */
+    background-color: #0f0d0b; /* its the same color as the nav bar */
+}
+
+/*AVERAGE THE STUFF OUT */
+.post, .user {
+    margin-bottom: 15px;
+    padding-bottom: 10px;
+    border-bottom: 1px solid #ccc; 
 }

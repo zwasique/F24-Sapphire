@@ -17,26 +17,119 @@
 			</ul>
 	</div></nav>
         <body>
+          <br>
             <h1 style="text-align:center;">Here is where you launch a post!</h1>
             <br><br>
-            <form method="post">
-              {% csrf_token %}
-              {% for field in form %}
-                  <div class="fieldWrapper">
-                      {{ field.errors }}
-                      {{ field.label_tag }} {{ field }}
-                  </div>
-                  {% endfor %}
-                  <input type = "submit" value="Sign Up!">
+            <form action="/action_page.php">
+                <fieldset>
+                  <legend>Post information:</legend>
+                  <!--First name:<br>
+                  <input type="text" name="firstname" value="Student"><br>
+                  Last name:<br>
+                  <input type="text" name="lastname" value="001"><br> should get name from user profile?-->
+                  Title:<br>
+                  <input type="text" name="title" value="Project Title Name"><br>
+                  Select Tags:<br>
+                  <select name="tag1">
+                    <option value="none">None</option>
+                    <option value="art">Art</option>
+                    <option value="math">Math</option>
+                    <option value="science">Science</option>
+                    <option value="history">History</option>
+                    <option value="chemistry">Chemistry</option>
+                    <option value="biology">Biology</option>
+                    <option value="calculus">Calculus</option>
+                    <option value="programming">Programming</option>
+                    <option value="research">Research</option>
+                    <option value="writing">Writing</option>
+                    <option value="theater">Theater</option>
+                  </select>
+                  <select name="tag2">
+                    <option value="none">None</option>
+                    <option value="art">Art</option>
+                    <option value="math">Math</option>
+                    <option value="science">Science</option>
+                    <option value="history">History</option>
+                    <option value="chemistry">Chemistry</option>
+                    <option value="biology">Biology</option>
+                    <option value="calculus">Calculus</option>
+                    <option value="programming">Programming</option>
+                    <option value="research">Research</option>
+                    <option value="writing">Writing</option>
+                    <option value="theater">Theater</option>
+                  </select>
+                  <select name="tag3">
+                    <option value="none">None</option>
+                    <option value="art">Art</option>
+                    <option value="math">Math</option>
+                    <option value="science">Science</option>
+                    <option value="history">History</option>
+                    <option value="chemistry">Chemistry</option>
+                    <option value="biology">Biology</option>
+                    <option value="calculus">Calculus</option>
+                    <option value="programming">Programming</option>
+                    <option value="research">Research</option>
+                    <option value="writing">Writing</option>
+                    <option value="theater">Theater</option>
+                  </select>
+                  <select name="tag4">
+                    <option value="none">None</option>
+                    <option value="art">Art</option>
+                    <option value="math">Math</option>
+                    <option value="science">Science</option>
+                    <option value="history">History</option>
+                    <option value="chemistry">Chemistry</option>
+                    <option value="biology">Biology</option>
+                    <option value="calculus">Calculus</option>
+                    <option value="programming">Programming</option>
+                    <option value="research">Research</option>
+                    <option value="writing">Writing</option>
+                    <option value="theater">Theater</option>
+                  </select>
+                  <select name="tag5">
+                    <option value="none">None</option>
+                    <option value="art">Art</option>
+                    <option value="math">Math</option>
+                    <option value="science">Science</option>
+                    <option value="history">History</option>
+                    <option value="chemistry">Chemistry</option>
+                    <option value="biology">Biology</option>
+                    <option value="calculus">Calculus</option>
+                    <option value="programming">Programming</option>
+                    <option value="research">Research</option>
+                    <option value="writing">Writing</option>
+                    <option value="theater">Theater</option>
+                  </select>
+                  <select name="tag6">
+                    <option value="none">None</option>
+                    <option value="art">Art</option>
+                    <option value="math">Math</option>
+                    <option value="science">Science</option>
+                    <option value="history">History</option>
+                    <option value="chemistry">Chemistry</option>
+                    <option value="biology">Biology</option>
+                    <option value="calculus">Calculus</option>
+                    <option value="programming">Programming</option>
+                    <option value="research">Research</option>
+                    <option value="writing">Writing</option>
+                    <option value="theater">Theater</option>
+                  </select><br>
+                  Number of people needed:<br>
+                  <input type="number" name="number" value="1" min="1" max="15"><br>
+                  Description:<br>
+                  <textarea style="width: 40%; height: 10%;" name="description" rows="10" columns="90"></textarea><br><br>
+                  Post:<br>
+                  <input type="submit" value="Launch!">
+                </fieldset>
               </form>
 
               
            
         </body>
     <nav><div id="footer">
-        <br><p>Team Sapphire 2024, Old Domionion University CS411W Project</p><br>     
-        <p><a href="https://github.com/zwasique/F24-Sapphire/tree/main">Prototype Github</a></p>
-        <p><a href="https://github.com/clars002/411-UConnect-website">Team Sapphire Github</a></p>    
-        <p><a href="https://clars002.github.io/411-UConnect-website/">Team Sapphire Website</a></p>   
+            Team Sapphire 2024, Old Dominion University • CS411W Project<br>     
+            <a href="https://github.com/zwasique/F24-Sapphire/tree/main">Prototype Github</a> • 
+            <a href="https://github.com/clars002/411-UConnect-website">Team Sapphire Github</a> • 
+            <a href="https://clars002.github.io/411-UConnect-website/">Team Sapphire Website</a>   
     </div></nav>
 </header>
