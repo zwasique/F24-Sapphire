@@ -1,8 +1,7 @@
 from django.http import HttpResponseRedirect
 from django.shortcuts import render
 
-from .forms import ProfileForm
-from .forms import CreatePost
+from .forms import PostForm, ProfileForm
 from .models import User
 from .models import UserPost
 
@@ -25,7 +24,7 @@ def signup(request):
 
         if form.is_valid():
             form.save()
-            return HttpResponseRedirect("database/pages/home.html") #will redirect to the home page if form is valid, however, this doesn't work right now
+            return HttpResponseRedirect("../home") #will redirect to the home page if form is valid, however, this doesn't work right now
         
     else:
         form = ProfileForm()
