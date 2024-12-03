@@ -15,9 +15,9 @@
                     <form method="post">
                     {% csrf_token %}
                     {% for field in form %}
-                        <div class="fieldWrapper">
+                        <div class="fieldWrapper" style="text-align: center;">
                             {{ field.errors }}
-                            {{ field.label_tag }} {{ field }}
+                            {{ field.label_tag }} <br> {{ field }}
                         </div>
                         {% endfor %}
                         <input type = "submit" value="Sign Up!">
