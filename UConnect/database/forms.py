@@ -28,7 +28,8 @@ class ProfileForm(ModelForm):
 
 #class for sending a message i broke this somehow last commit
 class MessageForm(ModelForm):
-    message_content = forms.CharField(widget=forms.Textarea, label="Message")
+    subject = forms.CharField(max_length=255, required=True, initial="Enter subject line")
+    message_content = forms.CharField(widget=forms.Textarea, required=True, label="Message")
     class Meta:
         model = Message
-        fields = ['message_content']
+        fields = ['subject', 'message_content']

@@ -4,9 +4,12 @@ from django.shortcuts import render, get_object_or_404
 from django.db.models import Q
 
 from .forms import ProfileForm
+from .forms import MessageForm
 from .forms import CreatePost
 from .models import User
 from .models import UserPost
+from .models import Message
+from .models import Conversation
 
 def login(request):
     return render(request, 'database/pages/login.html', {})
