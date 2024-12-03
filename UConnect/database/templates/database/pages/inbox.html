@@ -18,12 +18,10 @@
 	</div></nav>
         <body>
 
-           <div class="Inbox">
             <h2 style="text-align:center;">Your Project Chats</h2>
             {% if inbox %}
                 {% for conv in inbox %}
-                    <div class="conversation">
-                        <a href="?conversation_id={{ conv.id }}" class="subject">
+                        <a href="?conversation_id={{ conv.id }}">
                             <h4>{{ conv.post_id.project_name }}</h4>
                     </div>
                 {% endfor %}
@@ -33,7 +31,6 @@
            </div>
 
            {% if selected_conversation %}
-            <div class="selected-convo">
                 <h3>Conversation: {{ selected_conversation.post_id.project_name }}</h3> 
 
                 <div class="messages">
@@ -45,16 +42,14 @@
                 {% empty %}
                     <p>No messages. Send a message below!</p>
                 {% endfor %}
-            </div>
 
-            <div class="msg-form">
-                <h4>Send a Message</h4>
-                <form method="post">
-                    {% csrf_token %}
-                    {{ form.as_p }}
+                    <h4>Send a Message</h4>
+                    <form method="post">
+                        {% csrf_token %}
+                        {{ form.as_p }}
                     <button type="submit">Send!</button>
-                </form>
-            </div>
+                    </form>
+                    
             {% else %}
                 <p>Select a conversation to view messages.</p>
             {% endif %}
