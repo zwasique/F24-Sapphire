@@ -18,7 +18,7 @@ from django.urls import path
 from . import views 
 urlpatterns = [
     path('home/', views.home, name="home"),
-    path('profilecreation/', views.profile_form, name="profile_form"),
+    path('signup/', views.profile_form, name="profile_form"),
     path('profile/', views.profile, name="profile"),
     path('postcreation/', views.create_post, name="create_post"),
     path('posts/', views.posts, name="posts"),
