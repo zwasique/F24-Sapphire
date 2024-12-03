@@ -35,7 +35,9 @@ class Tag(
     models.Model
 ):  # Changed to just "Tag" since it seems we're using a single tag pool for posts/users
     name = models.CharField(max_length=15)
-    #tags = ["Programming", "Art"] (this could be wrong)
+
+    def __str__(self):
+        return self.name    
 
 class UserTagMapping(models.Model):
     # This is an Association Table; enables many-to-many between Users and Tags
