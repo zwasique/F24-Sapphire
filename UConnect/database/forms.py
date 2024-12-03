@@ -1,7 +1,7 @@
 from django import forms
 from django.forms import ModelForm
 
-from .models import Tag, User, UserPost, Message
+from .models import User, Message
 
 
 class CreatePost(ModelForm):
@@ -24,9 +24,9 @@ class ProfileForm(ModelForm):
     biography = forms.CharField(label="Biography", widget=forms.Textarea)
     class Meta:
         model = User
-        fields = ['school_email', 'password', 'first_name', 'last_name', 'biography', 'tags']
+        fields = ['school_email', 'password', 'first_name', 'last_name', 'biography']
 
-#class for sending a message
+#class for sending a message i broke this somehow last commit
 class MessageForm(ModelForm):
     message_content = forms.CharField(widget=forms.Textarea, label="Message")
     class Meta:
