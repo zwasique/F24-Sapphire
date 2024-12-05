@@ -2,7 +2,7 @@ from django.db import models
 from django.utils import timezone
 
 
-#moved tag to the top since other classes will use it
+# moved tag to the top since other classes will use it
 class Tag(
     models.Model
 ):  # Changed to just "Tag" since it seems we're using a single tag pool for posts/users
@@ -10,6 +10,7 @@ class Tag(
     name = models.CharField(max_length=15)
     def __str__(self):
         return self.name
+
 
 class User(
     models.Model
