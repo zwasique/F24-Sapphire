@@ -37,21 +37,10 @@ class UserPost(models.Model):  # made this sinfular
     author = models.ForeignKey(User, on_delete=models.CASCADE, null=True)
     recency_score = models.IntegerField(default=0)
     publish_datetime = models.DateTimeField(null=True)
+    tags = models.ManyToManyField(Tag, max_length=6)
 
     def __str__(self):
         return self.project_name
-
-
-class UserTagMapping(models.Model):
-    # This is an Association Table; enables many-to-many between Users and Tags
-    user = models.ForeignKey(User, on_delete=models.CASCADE)
-    tag_id = models.ForeignKey(Tag, on_delete=models.CASCADE)
-
-
-class PostTagMapping(models.Model):
-    # Mirrors UserTagMapping (but for posts)
-    post = models.ForeignKey(UserPost, on_delete=models.CASCADE)
-    tag_id = models.ForeignKey(Tag, on_delete=models.CASCADE)
 
 
 class Conversation(models.Model):
