@@ -22,20 +22,6 @@
 
             <!-- i think we need a div so that we can put this portion on the right side or something -->
             <tr>
-                <th>POSTS:</th>
-                <!-- <th>tags</th> -->
-            </tr>
-            {% for post in posts %}
-                <tr>
-                    <td>{{ post.project_name }}</td>
-                    <td>{{ post.post_body }}</td>
-                    <td>{{ post.project_length }}</td>
-                    <td>{{ post.num_required }}</td>
-                    <td>{{ post.author }}</td>
-                    <td>{{ post.publish_datetime }}</td>
-                </tr>
-            {% endfor %}
-            <tr>
                 <th>USERS:</th>
                 <!-- <th>tags</th> -->
             </tr>
@@ -44,6 +30,9 @@
                 <td>{{ user.first_name }}</td>
                 <td>{{ user.last_name }}</td>
                 <td>{{ user.biography }}</td>
+                {% for tag in user.tags.all %}
+                  <td>{{ tag.name }}</td>
+                {% endfor %}
             </tr>
             {% endfor %}
             <br><br>
@@ -146,15 +135,18 @@
                 <!--<h1 style="text-align: center; text-decoration: underline; font-weight: bold; color: #362312;">Posts</h1><br>
               -->
                 <div class="posts-section">
-                {% for post in post_list %}
+                {% for post in posts %}
                 <div class="post">
                 <h2>
                 <span class="project-name">{{ post.project_name }}</span>
                 <span class="post-author">Launcher: {{ post.author }}</span>
                 <span class="num-required">{{ post.num_required }} Seekers</span>
+                {% for tag in post.tags.all %}
+                  <td>{{ tag.name }}</td>
+                {% endfor %}
                 </h2>
               <div class="post-class">
-              {{ post.written_text }}
+              {{ post.post_body }}
               </div>
                <hr>
                 </div>
