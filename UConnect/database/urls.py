@@ -23,6 +23,6 @@ urlpatterns = [
     path('launch/', views.launch, name="launch"),
     path('inbox/', views.inbox, name="inbox"),
     path('search/', views.search, name="search"),
-    path('account/', views.account, name="account"),
-    path('login/', views.login, name="login"),
+    path('account/', views.account , name="account"),
+    path('', views.login, name="login"),
 ]
