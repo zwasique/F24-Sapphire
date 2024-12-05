@@ -1,4 +1,5 @@
 from django.db import models
+from django.utils import timezone
 
 
 #moved tag to the top since other classes will use it
@@ -36,7 +37,7 @@ class UserPost(models.Model):  # made this sinfular
     post_body = models.CharField(max_length=4096, default="No post body.")
     author = models.ForeignKey(User, on_delete=models.CASCADE, null=True)
     recency_score = models.IntegerField(default=0)
-    publish_datetime = models.DateTimeField(null=True)
+    publish_datetime = models.DateTimeField(default=timezone.now(), null=True)
     tags = models.ManyToManyField(Tag, max_length=6)
 
     def __str__(self):
