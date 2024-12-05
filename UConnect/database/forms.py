@@ -17,7 +17,7 @@ class PostForm(ModelForm):
     tags = forms.ModelMultipleChoiceField(label="Select up to 6 tags.", queryset=Tag.objects.all(), widget=forms.CheckboxSelectMultiple)
     class Meta:
         model = UserPost
-        fields = ['project_name', 'num_required', 'project_length', 'post_body', 'tags'] # TODO: Currently missing Author, recency score, publish datetime
+        fields = ['project_name', 'num_required', 'project_length', 'post_body', 'tags'] # TODO: Currently missing Author, recency score
 
 # class for making a user's profile; the forms should get the user's first and last name as well as biography
 class ProfileForm(ModelForm):
@@ -31,3 +31,12 @@ class ProfileForm(ModelForm):
     class Meta:
         model = User
         fields = ['school_email', 'password', 'first_name', 'last_name', 'biography', 'tags']
+
+
+class AccountForm(ModelForm):
+    biography = forms.CharField(label="Biography", widget=forms.Textarea, required=False)
+    tags = forms.ModelMultipleChoiceField(label="Select up to 6 tags.", queryset=Tag.objects.all(), widget=forms.CheckboxSelectMultiple, required=False)
+    #to do: implement tag limit
+    class Meta:
+        model = User
+        fields = ['biography', 'tags']

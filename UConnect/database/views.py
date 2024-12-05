@@ -1,7 +1,7 @@
 from django.http import HttpResponseRedirect
 from django.shortcuts import render
 
-from .forms import PostForm, ProfileForm
+from .forms import PostForm, ProfileForm, AccountForm
 from .models import User
 from .models import UserPost
 
@@ -47,9 +47,24 @@ def launch(request):
 
 
 def account(request):
-    user = User.objects.get(pk=1) # For now just retrieves first user in db, ideally we can specify it per request
+    user = User.objects.get(pk=1) # Note: this is just the first user in the DB for now
+    if request.method == "POST":
+        form = AccountForm(request.POST, instance=user)
 
-    return render(request, "database/pages/account.html", {'user': user})    
+        if form.is_valid():
+            form.save()
+            return HttpResponseRedirect("../account")
+
+    else:
+        form = AccountForm(initial={"biography": user.biography})
+
+    return render(request, 'database/pages/account.html', {"form": form, "user": user})
+
+
+# def account(request):
+#     user = User.objects.get(pk=1) # For now just retrieves first user in db, ideally we can specify it per request
+
+#     return render(request, "database/pages/account.html", {'user': user})    
 
 
 def search(request):
