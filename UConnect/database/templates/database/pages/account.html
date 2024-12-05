@@ -19,7 +19,18 @@
         <body>
           <br>
             <h1 style="text-align:center;">Here is where you view your account!</h1>
-            <br><br>
+                <tr>
+                    <th>Name</th>
+                    <th>Email</th>
+                    <th>Biography</th>
+                </tr>
+                <tr>
+                    <td>{{ user.first_name }}</td>
+                    <td>{{ user.last_name }}</td>
+                    <td>{{ user.school_email }}</td>
+                    <td>{{ user.biography }}</td>
+                </tr>
+            <br><br><br><br><br>
             <form action="/action_page.php">
                 <fieldset>
                   <legend>Edit Profile:</legend>
