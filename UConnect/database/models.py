@@ -1,4 +1,5 @@
 from django.db import models
+from django.utils import timezone
 
 
 # moved tag to the top since other classes will use it
@@ -37,22 +38,11 @@ class UserPost(models.Model):  # made this sinfular
     post_body = models.CharField(max_length=4096, default="No post body.")
     author = models.ForeignKey(User, on_delete=models.CASCADE, null=True)
     recency_score = models.IntegerField(default=0)
-    publish_datetime = models.DateTimeField(null=True)
+    publish_datetime = models.DateTimeField(default=timezone.now(), null=True)
+    tags = models.ManyToManyField(Tag, max_length=6)
 
     def __str__(self):
         return self.project_name
-
-
-class UserTagMapping(models.Model):
-    # This is an Association Table; enables many-to-many between Users and Tags
-    user = models.ForeignKey(User, on_delete=models.CASCADE)
-    tag_id = models.ForeignKey(Tag, on_delete=models.CASCADE)
-
-
-class PostTagMapping(models.Model):
-    # Mirrors UserTagMapping (but for posts)
-    post = models.ForeignKey(UserPost, on_delete=models.CASCADE)
-    tag_id = models.ForeignKey(Tag, on_delete=models.CASCADE)
 
 
 class Conversation(models.Model):
