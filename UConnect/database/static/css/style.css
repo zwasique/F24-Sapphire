@@ -164,7 +164,7 @@ textarea{
 
 /* === FOOTER SECTION === */
 #footer{
-	position: fixed;
+	position: sticky;
 	height: 40px;
 	left: 0%;
 	right: 0%;
