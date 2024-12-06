@@ -19,9 +19,21 @@
         <body>
             <br>
             <h1 style="text-align:center;">Here is where you search for posts and users!</h1>
+            <body> Filtering by tags: {{ filter_tags }} </body>
+            <body> Filtering by text: {{ filter_text }} </body>
 
             <!-- i think we need a div so that we can put this portion on the right side or something -->
             <tr>
+              <form method="post">
+                {% csrf_token %}
+                {% for field in form %}
+                    <div class="fieldWrapper" style="text-align: center;">
+                        {{ field.errors }}
+                        {{ field.label_tag }} <br> {{ field }}
+                    </div>
+                    {% endfor %}
+                    <input type = "submit" value="Search!">
+                </form>
                 <th>USERS:</th>
                 <!-- <th>tags</th> -->
             </tr>
@@ -36,7 +48,7 @@
             </tr>
             {% endfor %}
             <br><br>
-            <form action="/action_page.php">
+            <!-- <form action="/action_page.php">
                 <fieldset>
                   <legend>Search</legend>
                   <strong>Select Search Tags:</strong><br>
@@ -127,7 +139,7 @@
                   </div>
                   <input type="submit" value="Search!">
                 </fieldset>
-              </form>
+              </form> -->
               <br><br>
               
               <!--start of containers-->

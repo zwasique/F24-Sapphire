@@ -1,5 +1,5 @@
 from django import forms
-from django.forms import ModelForm
+from django.forms import ModelForm, Form
 
 from .models import Tag, User, UserPost
 
@@ -40,3 +40,12 @@ class AccountForm(ModelForm):
     class Meta:
         model = User
         fields = ['biography', 'tags']
+
+
+class FilterForm(ModelForm):
+    tags = forms.ModelMultipleChoiceField(label="Filter by tags:", queryset = Tag.objects.all(), required=False)
+    keywords = forms.CharField(label="Filter by text:", required=False)
+
+    class Meta:
+        model = Tag
+        fields = ['tags', 'keywords']
