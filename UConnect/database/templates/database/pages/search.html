@@ -34,19 +34,6 @@
                     {% endfor %}
                     <input type = "submit" value="Search!">
                 </form>
-                <th>USERS:</th>
-                <!-- <th>tags</th> -->
-            </tr>
-            {% for user in users %}
-            <tr>
-                <td>{{ user.first_name }}</td>
-                <td>{{ user.last_name }}</td>
-                <td>{{ user.biography }}</td>
-                {% for tag in user.tags.all %}
-                  <td>{{ tag.name }}</td>
-                {% endfor %}
-            </tr>
-            {% endfor %}
             <br><br>
             <!-- <form action="/action_page.php">
                 <fieldset>
@@ -171,16 +158,21 @@
                     <!--<h1 style="text-align: center; text-decoration: underline; font-weight: bold; color: #362312;">Users</h1><br>
                 -->
                     <!-- Example users -->
-                    <div class="user">
-                        <h3>Student001</h3>
-                        <p>Looking for: 2 collaborators</p>
-                        <p>Tags: Programming, Design</p>
-                    </div>
-                    <div class="user">
-                        <h3>Student002</h3>
-                        <p>Looking for: 5 collaborators</p>
-                        <p>Tags: Art, Creativity</p>
-                    </div>
+                    <th>USERS:</th>
+                <!-- <th>tags</th> -->
+            </tr>
+            {% for user in users %}
+            <tr>
+                <h3><td>{{ user.first_name }}</td>
+                <td>{{ user.last_name }}</td></h3>
+                <td>{{ user.biography }}</td>
+                Tags:
+                {% for tag in user.tags.all %}
+                  <td>{{ tag.name }}</td>
+                {% endfor %}
+            </tr>
+            {% endfor %}
+                    
             </div>
           </div> <!--end of scroll containers-->
         
