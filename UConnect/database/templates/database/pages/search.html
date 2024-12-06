@@ -139,6 +139,9 @@
                 <h2>
                 <span class="project-name">{{ post.project_name }}</span>
                 <span class="post-author">Launcher: {{ post.author }}</span>
+                <span class="num-required">{{ post.project_length }} Months</span>
+                <br> <br>
+                
                 <span class="num-required">{{ post.num_required }} Seekers</span>
                 {% for tag in post.tags.all %}
                   <span class="tags-style"><td>{{ tag.name }}</td></span>
@@ -147,6 +150,8 @@
               <div class="post-class">
               {{ post.post_body }}
               </div>
+              <br>
+              <span class="num-required">Posted at: {{ post.publish_datetime }}</span>
                <hr>
                 </div>
              {% endfor %}
