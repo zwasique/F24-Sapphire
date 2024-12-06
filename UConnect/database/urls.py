@@ -18,14 +18,12 @@ from django.urls import path
 from . import views 
 urlpatterns = [
     path('home/', views.home, name="home"),
-    path('profilecreation/', views.profile_form, name="profile_form"),
-    path('profile/', views.profile, name="profile"),
-    path('postcreation/', views.create_post, name="create_post"),
+    path('signup/', views.signup, name="profile_form"),
     path('posts/', views.posts, name="posts"),
     path('launch/', views.launch, name="launch"),
     path('inbox/', views.inbox, name="inbox"), 
     path('inbox/<int:conversation_id>/', views.inbox, name="view_conversation"),
     path('search/', views.search, name="search"),
     path('account/', views.account , name="account"),
-    path('login/', views.login, name="login")
+    path('', views.login, name="login"),
 ]

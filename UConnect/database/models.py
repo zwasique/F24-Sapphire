@@ -2,6 +2,16 @@ from django.db import models
 from django.utils import timezone
 
 
+# moved tag to the top since other classes will use it
+class Tag(
+    models.Model
+):  # Changed to just "Tag" since it seems we're using a single tag pool for posts/users
+    
+    name = models.CharField(max_length=15)
+    def __str__(self):
+        return self.name
+
+
 class User(
     models.Model
 ):  # made this singular because one object does not contain multiple users.
@@ -14,7 +24,8 @@ class User(
     biography = models.CharField(
         max_length=1000,
         default="This user has thus far opted to maintain an air of mystery.",
-    )  # check it out i added something please write me a good peer review
+    )
+    tags = models.ManyToManyField(Tag, max_length=6)
 
     def __str__(self):
         return self.school_email
@@ -24,45 +35,22 @@ class User(
 
 
 class UserPost(models.Model):  # made this sinfular
-    author = models.ForeignKey(User, on_delete=models.CASCADE)
     project_name = models.CharField(max_length=30)
     num_required = models.IntegerField()
-    written_text = models.CharField(max_length=6000)
-    recency_score = models.IntegerField()
-    publish_datetime = models.DateTimeField()
+    project_length = models.IntegerField(default=6) # expected length of the project in months (added for parity with CreatePost form)
+    post_body = models.CharField(max_length=4096, default="No post body.")
+    author = models.ForeignKey(User, on_delete=models.CASCADE, null=True)
+    recency_score = models.IntegerField(default=0)
+    publish_datetime = models.DateTimeField(default=timezone.now(), null=True)
+    tags = models.ManyToManyField(Tag, max_length=6)
 
     def __str__(self):
         return self.project_name
 
 
-class Tag(
-    models.Model
-):  # Changed to just "Tag" since it seems we're using a single tag pool for posts/users
-    name = models.CharField(max_length=15)
-    #tags = ["Programming", "Art"] (this could be wrong)
-
-class UserTagMapping(models.Model):
-    # This is an Association Table; enables many-to-many between Users and Tags
-    user = models.ForeignKey(User, on_delete=models.CASCADE)
-    tag_id = models.ForeignKey(Tag, on_delete=models.CASCADE)
-
-
-class PostTagMapping(models.Model):
-    # Mirrors UserTagMapping (but for posts)
-    post = models.ForeignKey(UserPost, on_delete=models.CASCADE)
-    tag_id = models.ForeignKey(Tag, on_delete=models.CASCADE)
-
-
-class Conversation(models.Model): 
-    post_id = models.ForeignKey(UserPost, on_delete=models.CASCADE, null=True) 
-    seeker_id = models.ForeignKey(User, on_delete=models.CASCADE, null=True, related_name="seeker") #seeker reaching out 
-    launcher_id = models.ForeignKey(User, on_delete=models.CASCADE, null=True, related_name="launcher") #launcher receiving message
-
-    def __str__(self): #return the project name
-        return f"{self.post_id.project_name}"
-    
-    def get_message(self): #get all messages in specific conversation
-        return self.message_set.order_by('time_sent')
+class Conversation(models.Model):
+    post_id = models.ForeignKey(UserPost, on_delete=models.CASCADE)
+    seeker_id = models.ForeignKey(User, on_delete=models.CASCADE)
 
 
 class Message(models.Model):
@@ -71,24 +59,4 @@ class Message(models.Model):
     recipient = models.ForeignKey(User, on_delete=models.CASCADE, null=True, related_name="received_msg")  # who received message
     subject = models.CharField(max_length=255, default="Enter subject line here") 
     time_sent = models.DateTimeField()
-    message_content = models.TextField() #TextField for multiline, better for msg/comment type strings (?)
-    
-    def __str__(self):
-        return f"Message from {self.sender} to {self.recipient} at {self.time_sent}"
-
-    def send_message(self, from_sender, to_recipient, message_content, post):
-        conversation, created = Conversation.objects.get_or_create(
-            post_id = post,
-            seeker_id = from_sender,
-            launcher_id = to_recipient
-        )
-        message = Message(
-            conversation_id = conversation,
-            sender = from_sender,
-            recipient = to_recipient,
-            subject = post.project_name, #subject line = project name of post
-            time_sent = timezone.now(),
-            message_content = message_content
-        )
-        message.save()
-        return message
+    message_content = models.CharField(max_length=600)

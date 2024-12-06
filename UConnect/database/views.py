@@ -3,9 +3,7 @@ from django.http import HttpResponseRedirect
 from django.shortcuts import render, get_object_or_404
 from django.db.models import Q
 
-from .forms import ProfileForm
-from .forms import MessageForm
-from .forms import CreatePost
+from .forms import PostForm, ProfileForm, AccountForm, FilterForm
 from .models import User
 from .models import UserPost
 from .models import Message
@@ -20,100 +18,121 @@ def home(request):
 def posts(request):
     return render(request, 'database/pages/posts.html')
 
-def launch(request):
-    return render(request, 'database/pages/launch.html')
+def inbox(request):
+    return render(request, 'database/pages/inbox.html')
 
-def account(request):
-    return render(request, 'database/pages/account.html')
 
-def inbox(request): 
-    user = User.objects.get(id=request.user.id) #get user
-    #show convos whether you sent or received msg... sender is defined by convo as seeker, recipient is defined by convo as launcher
-    conversation = Conversation.objects.filter(Q(seeker_id = user) | Q(launcher_id = user))
-
-    selected_conv = None 
-    messages = []
-
-    form = MessageForm()
-
-    #when user selects specific chat
-    if request.GET.get('conversation_id'):
-        conversation_id = request.GET.get('conversation_id')
-        selected_conv = get_object_or_404(Conversation, id=conversation_id) #get convo. if doesn't exist, 404
-        messages = selected_conv.get_message()
-    
-    #get all messages
-    if not selected_conv:
-        inbox = user.get_messages()
-
-    #connect!
-    if request.method == 'POST' and selected_conv:
-        form = MessageForm(request.POST)
-
-        if form.is_valid():
-            message_content = form.cleaned_data['message_content']
-
-        message = Message(
-            conversation_id = selected_conv,
-            sender = user,
-            recipient = selected_conv.launcher_id,
-            subject = selected_conv.post_id.project_name,
-            time_sent = timezone.now(),
-            message_content = message_content
-        )
-        message.save()
-    
-        #send user back to convo after sending message
-        return HttpResponseRedirect(f'?conversation_id={selected_conv.id}')
-
-    return render(request, 'database/pages/inbox.html', {
-        "inbox": conversation,
-        "selected_conversation": selected_conv,
-        "messages": messages,
-        "form" : form
-    })
-
-def profile_form(request):
+def signup(request):
     if request.method == "POST":
         form = ProfileForm(request.POST)
 
         if form.is_valid():
             form.save()
-            return HttpResponseRedirect("database/pages/home.html") #will redirect to the home page if form is valid, however, this doesn't work right now
+            return HttpResponseRedirect("../home") #will redirect to the home page if form is valid, however, this doesn't work right now
         
     else:
         form = ProfileForm()
     
     return render(request, "database/pages/signup.html", {"form": form})
 
-def profile(request):
-    # ChatGPT code start
-    user = User.objects.get(pk=1)
 
-    context={
-        'first_name': user.first_name,
-        'last_name': user.last_name,
-        'biography': user.biography
-    }
-    # ChatGPT code end
-
-    return render(request, "database/pages/profile.html", {'profile': context})    
-
-def create_post(request):
+def launch(request):
     if request.method == "POST":
-        form = CreatePost(request.POST)
+        form = PostForm(request.POST)
 
         if form.is_valid():
             form.save()
-            return HttpResponseRedirect("/profile/") # eventually want this to be search page
+            return HttpResponseRedirect("../home")
 
     else:
-        form = CreatePost()
+        form = PostForm()
 
-    return render(request, "database/pages/searching.html", {"form": form})
+    return render(request, 'database/pages/launch.html', {"form": form})
+
+
+def account(request):
+    user = User.objects.get(pk=1) # Note: this is just the first user in the DB for now
+    if request.method == "POST":
+        form = AccountForm(request.POST, instance=user)
+
+        if form.is_valid():
+            form.save()
+            return HttpResponseRedirect("../account")
+
+    else:
+        form = AccountForm(initial={"biography": user.biography})
+
+    return render(request, 'database/pages/account.html', {"form": form, "user": user})
+
+
+# def account(request):
+#     user = User.objects.get(pk=1) # For now just retrieves first user in db, ideally we can specify it per request
+
+#     return render(request, "database/pages/account.html", {'user': user})    
+
 
 def search(request):
-    post_list = UserPost.objects.all()
-    return render(request, 'database/pages/search.html',
-                  {'post_list': post_list})
+    if request.method == "POST":
+        form = FilterForm(request.POST)
 
+        if form.is_valid():
+            redirect_path = "../search?"
+            selected_tags = form.cleaned_data['tags']
+            search_substring = form.cleaned_data['keywords']
+            if selected_tags:
+                redirect_path += "tags=" # TODO: Doesn't properly handle multiple tags
+                redirect_path += selected_tags[0].name
+                for tag in selected_tags[1:]:
+                    redirect_path += '&tags=' + tag.name
+                if search_substring:
+                    redirect_path += "&"
+            
+            if search_substring:
+                redirect_path += "text=" + search_substring
+
+            return HttpResponseRedirect(redirect_path)
+
+    else:
+        form = FilterForm()
+
+        tags = request.GET.getlist('tags')
+        text = request.GET.get('text')
+
+        posts = UserPost.objects.all()
+        users = User.objects.all()
+
+        if tags:
+            scored_posts = []
+            scored_users = []
+
+            for post in posts:
+                hit_count = 0
+                for tag in post.tags.all():
+                    if tag.name in(tags):
+                        hit_count += 1
+                if hit_count >= 1:
+                    scored_posts.append((post, hit_count))
+
+            for user in users:
+                hit_count = 0
+                for tag in user.tags.all():
+                    if tag.name in(tags):
+                        hit_count += 1
+                if hit_count >= 1:
+                    scored_users.append((user, hit_count))
+
+            scored_posts.sort(key=lambda x: x[1], reverse=True)
+            posts = [p[0] for p in scored_posts]
+
+            scored_users.sort(key=lambda x: x[1], reverse=True)
+            users = [u[0] for u in scored_users]
+        
+        if text:
+            start_posts = posts
+            start_users = users
+
+            posts = [p for p in start_posts if text in p.post_body]
+            users = [u for u in start_users if text in u.biography]
+
+    return render(request, 'database/pages/search.html', {'form': form, 'posts': posts, 'users': users, 'filter_tags': tags, 'filter_text': text})
+# credit: https://medium.com/@biswajitpanda973/how-to-fetch-all-data-from-database-using-django-87d4e1951931

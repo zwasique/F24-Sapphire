@@ -19,101 +19,21 @@
         <body>
           <br>
             <h1 style="text-align:center;">Here is where you view your account!</h1>
-            <br><br>
-            <form action="/action_page.php">
+            <br><br><br><br><br>
+            <form method="post">
+            {% csrf_token %}
                 <fieldset>
                   <legend>Edit Profile:</legend>
                   First name:<br>
-                  <input type="text" name="firstname" value="Student"><br>
+                  {{ user.first_name }}<br>
                   Last name:<br>
-                  <input type="text" name="lastname" value="001"><br>
+                  {{ user.last_name }}<br>
                   Bio:<br>
-                  <textarea  style="width: 40%; height: 10%;" name="Bio" rows="10" columns="90"></textarea><br>
+                  <div class="fieldWrapper" style="text-align: left;">
+                    {{ form.biography }}
+                  </div>
                   Select User Tags:<br>
-                  <select name="tag1">
-                    <option value="none">None</option>
-                    <option value="art">Art</option>
-                    <option value="math">Math</option>
-                    <option value="science">Science</option>
-                    <option value="history">History</option>
-                    <option value="chemistry">Chemistry</option>
-                    <option value="biology">Biology</option>
-                    <option value="calculus">Calculus</option>
-                    <option value="programming">Programming</option>
-                    <option value="research">Research</option>
-                    <option value="writing">Writing</option>
-                    <option value="theater">Theater</option>
-                  </select>
-                  <select name="tag2">
-                    <option value="none">None</option>
-                    <option value="art">Art</option>
-                    <option value="math">Math</option>
-                    <option value="science">Science</option>
-                    <option value="history">History</option>
-                    <option value="chemistry">Chemistry</option>
-                    <option value="biology">Biology</option>
-                    <option value="calculus">Calculus</option>
-                    <option value="programming">Programming</option>
-                    <option value="research">Research</option>
-                    <option value="writing">Writing</option>
-                    <option value="theater">Theater</option>
-                  </select>
-                  <select name="tag3">
-                    <option value="none">None</option>
-                    <option value="art">Art</option>
-                    <option value="math">Math</option>
-                    <option value="science">Science</option>
-                    <option value="history">History</option>
-                    <option value="chemistry">Chemistry</option>
-                    <option value="biology">Biology</option>
-                    <option value="calculus">Calculus</option>
-                    <option value="programming">Programming</option>
-                    <option value="research">Research</option>
-                    <option value="writing">Writing</option>
-                    <option value="theater">Theater</option>
-                  </select><br>
-                  <select name="tag4">
-                    <option value="none">None</option>
-                    <option value="art">Art</option>
-                    <option value="math">Math</option>
-                    <option value="science">Science</option>
-                    <option value="history">History</option>
-                    <option value="chemistry">Chemistry</option>
-                    <option value="biology">Biology</option>
-                    <option value="calculus">Calculus</option>
-                    <option value="programming">Programming</option>
-                    <option value="research">Research</option>
-                    <option value="writing">Writing</option>
-                    <option value="theater">Theater</option>
-                  </select>
-                  <select name="tag5">
-                    <option value="none">None</option>
-                    <option value="art">Art</option>
-                    <option value="math">Math</option>
-                    <option value="science">Science</option>
-                    <option value="history">History</option>
-                    <option value="chemistry">Chemistry</option>
-                    <option value="biology">Biology</option>
-                    <option value="calculus">Calculus</option>
-                    <option value="programming">Programming</option>
-                    <option value="research">Research</option>
-                    <option value="writing">Writing</option>
-                    <option value="theater">Theater</option>
-                  </select>
-                  <select name="tag6">
-                    <option value="none">None</option>
-                    <option value="art">Art</option>
-                    <option value="math">Math</option>
-                    <option value="science">Science</option>
-                    <option value="history">History</option>
-                    <option value="chemistry">Chemistry</option>
-                    <option value="biology">Biology</option>
-                    <option value="calculus">Calculus</option>
-                    <option value="programming">Programming</option>
-                    <option value="research">Research</option>
-                    <option value="writing">Writing</option>
-                    <option value="theater">Theater</option>
-                  </select><br><br><br>
+                  <div> {{ form.tags }} </div>
                   <input type="submit" value="Save!">
                 </fieldset>
               </form>

@@ -19,8 +19,36 @@
         <body>
             <br>
             <h1 style="text-align:center;">Here is where you search for posts and users!</h1>
+            <body> Filtering by tags: {{ filter_tags }} </body>
+            <body> Filtering by text: {{ filter_text }} </body>
+
+            <!-- i think we need a div so that we can put this portion on the right side or something -->
+            <tr>
+              <form method="post">
+                {% csrf_token %}
+                {% for field in form %}
+                    <div class="fieldWrapper" style="text-align: center;">
+                        {{ field.errors }}
+                        {{ field.label_tag }} <br> {{ field }}
+                    </div>
+                    {% endfor %}
+                    <input type = "submit" value="Search!">
+                </form>
+                <th>USERS:</th>
+                <!-- <th>tags</th> -->
+            </tr>
+            {% for user in users %}
+            <tr>
+                <td>{{ user.first_name }}</td>
+                <td>{{ user.last_name }}</td>
+                <td>{{ user.biography }}</td>
+                {% for tag in user.tags.all %}
+                  <td>{{ tag.name }}</td>
+                {% endfor %}
+            </tr>
+            {% endfor %}
             <br><br>
-            <form action="/action_page.php">
+            <!-- <form action="/action_page.php">
                 <fieldset>
                   <legend>Search</legend>
                   <strong>Select Search Tags:</strong><br>
@@ -111,7 +139,7 @@
                   </div>
                   <input type="submit" value="Search!">
                 </fieldset>
-              </form>
+              </form> -->
               <br><br>
               
               <!--start of containers-->
@@ -119,15 +147,18 @@
                 <!--<h1 style="text-align: center; text-decoration: underline; font-weight: bold; color: #362312;">Posts</h1><br>
               -->
                 <div class="posts-section">
-                {% for post in post_list %}
+                {% for post in posts %}
                 <div class="post">
                 <h2>
                 <span class="project-name">{{ post.project_name }}</span>
                 <span class="post-author">Launcher: {{ post.author }}</span>
                 <span class="num-required">{{ post.num_required }} Seekers</span>
+                {% for tag in post.tags.all %}
+                  <td>{{ tag.name }}</td>
+                {% endfor %}
                 </h2>
               <div class="post-class">
-              {{ post.written_text }}
+              {{ post.post_body }}
               </div>
                <hr>
                 </div>
