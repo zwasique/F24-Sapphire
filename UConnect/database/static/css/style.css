@@ -91,6 +91,15 @@ textarea{
 	font-size:15px;
 }
 
+.tags-style{
+	color:#F9F9F9;
+	background-color:#2b2b2b; 
+	padding: 5px 10px; 
+	border-radius: 5px;
+	border: 2px solid #F9F9F9; 
+	font-size:15px;
+}
+
 
 /* === NAVBAR SECTION === */
 #navbar{
@@ -155,7 +164,7 @@ textarea{
 
 /* === FOOTER SECTION === */
 #footer{
-	position: absolute;
+	position: sticky;
 	height: 40px;
 	left: 0%;
 	right: 0%;

@@ -28,10 +28,7 @@ class User(
     tags = models.ManyToManyField(Tag, max_length=6)
 
     def __str__(self):
-        return self.school_email
-    
-    def get_messages(self): #get all messages sent to user
-        return Message.objects.filter(recipient=self).order_by('-time_sent')
+        return self.first_name + " " + self.last_name
 
 
 class UserPost(models.Model):  # made this sinfular
