@@ -23,17 +23,19 @@
             <form method="post">
             {% csrf_token %}
                 <fieldset>
-                  <legend>Edit Profile:</legend>
-                  First name:<br>
+                  <legend>Edit Profile</legend>
+                  <strong>First name:</strong><br>
                   {{ user.first_name }}<br>
-                  Last name:<br>
-                  {{ user.last_name }}<br>
-                  Bio:<br>
+                  <strong>Last name:</strong><br>
+                  {{ user.last_name }}<br><br>
+                  <strong>Bio:</strong><br>
                   <div class="fieldWrapper" style="text-align: left;">
                     {{ form.biography }}
                   </div>
-                  Select User Tags:<br>
+                  <br>
+                  <strong>Select User Tags:</strong><br>
                   <div> {{ form.tags }} </div>
+                  <br>
                   <input type="submit" value="Save!">
                 </fieldset>
               </form>
