@@ -9,11 +9,20 @@ class PostForm(ModelForm):
     num_required = forms.IntegerField(
         label="Desired Number of Seekers: ", min_value=1, max_value=15, help_text="No more than 15")
     project_length = forms.IntegerField(
-        label="Expected Project Length", min_value=0, max_value=24, help_text="Estimated length of project in months")
+        label="Expected Project Length(Months)", min_value=0, max_value=24, help_text="Estimated length of project in months") #i added it to say months in the label because it does not show up in help text? idk how that works -Tyger
     # project tags, seeking tags (guys i'm inclined to just have one field for these.)
     post_body = forms.CharField(
         label="Project Description: ", max_length=4096, help_text="Visit the Home Page if you need an example",
         widget=forms.Textarea)
+    
+    #okay i split the tags here so that it shows up as a drop down again, and set the first one to requiered
+    tag_1 = forms.ModelChoiceField(queryset=Tag.objects.all(), required=True, label="Tag 1")
+    tag_2 = forms.ModelChoiceField(queryset=Tag.objects.all(), required=False, label="Tag 2")
+    tag_3 = forms.ModelChoiceField(queryset=Tag.objects.all(), required=False, label="Tag 3")
+    tag_4 = forms.ModelChoiceField(queryset=Tag.objects.all(), required=False, label="Tag 4")
+    tag_5 = forms.ModelChoiceField(queryset=Tag.objects.all(), required=False, label="Tag 5")
+    tag_6 = forms.ModelChoiceField(queryset=Tag.objects.all(), required=False, label="Tag 6")
+    
     tags = forms.ModelMultipleChoiceField(label="Select up to 6 tags.", queryset=Tag.objects.all(), widget=forms.CheckboxSelectMultiple)
     class Meta:
         model = UserPost
@@ -42,10 +51,15 @@ class AccountForm(ModelForm):
         fields = ['biography', 'tags']
 
 
-class FilterForm(ModelForm):
-    tags = forms.ModelMultipleChoiceField(label="Filter by tags:", queryset = Tag.objects.all(), required=False)
-    keywords = forms.CharField(label="Filter by text:", required=False)
-
-    class Meta:
-        model = Tag
-        fields = ['tags', 'keywords']
+class FilterForm(Form):
+    keywords = forms.CharField(
+        required=False,
+        label="Filter by text:",
+        widget=forms.TextInput(attrs={'placeholder': 'Search by keyword...'})
+    )
+    tag_1 = forms.ModelChoiceField(queryset=Tag.objects.all(), required=False, label="Tag 1")
+    tag_2 = forms.ModelChoiceField(queryset=Tag.objects.all(), required=False, label="Tag 2")
+    tag_3 = forms.ModelChoiceField(queryset=Tag.objects.all(), required=False, label="Tag 3")
+    tag_4 = forms.ModelChoiceField(queryset=Tag.objects.all(), required=False, label="Tag 4")
+    tag_5 = forms.ModelChoiceField(queryset=Tag.objects.all(), required=False, label="Tag 5")
+    tag_6 = forms.ModelChoiceField(queryset=Tag.objects.all(), required=False, label="Tag 6")

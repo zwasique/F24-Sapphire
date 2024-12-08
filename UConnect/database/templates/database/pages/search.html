@@ -18,9 +18,39 @@
 	</div></nav>
         <body>
             <br>
-            <h1 style="text-align:center;">Here is where you search for posts and users!</h1>
-            <body> Filtering by tags: {{ filter_tags }} </body>
-            <body> Filtering by text: {{ filter_text }} </body>
+            <h1 style="text-align:center;">Search for posts and users!</h1>
+            
+            <!--Ok i added the dropdowns here as well, im not super versed in this so run some tests or we die 1000 deaths maybe -tyger-->
+            
+
+            <!--i kinda put them together-->
+            
+            <div class="form-container">
+              <form method="post" style="text-align:center;">
+                {% csrf_token %}
+          
+                <!-- Filter by Text -->
+                <label for="filter_text">Filter by text:</label>
+                <input type="text" id="filter_text" name="filter_text" placeholder="Search by keyword..." value="{{ filter_text }}">
+                <br><br>
+          
+                <!-- Filter by Tags -->
+                <div class="tags-container">
+                  <div class="tag-dropdown">{{ form.tag_1.label_tag }} {{ form.tag_1 }}</div>
+                  <div class="tag-dropdown">{{ form.tag_2.label_tag }} {{ form.tag_2 }}</div>
+                  <div class="tag-dropdown">{{ form.tag_3.label_tag }} {{ form.tag_3 }}</div>
+                  <div class="tag-dropdown">{{ form.tag_4.label_tag }} {{ form.tag_4 }}</div>
+                  <div class="tag-dropdown">{{ form.tag_5.label_tag }} {{ form.tag_5 }}</div>
+                  <div class="tag-dropdown">{{ form.tag_6.label_tag }} {{ form.tag_6 }}</div>
+              </div>
+              
+                <br>
+          
+                <!-- should be a shared search -->
+                <input type="submit" value="Search!">
+              </form>
+            </div>
+            <br>
 
             <!-- i think we need a div so that we can put this portion on the right side or something -->
             <tr>
@@ -37,7 +67,7 @@
                 <th>USERS:</th>
                 <!-- <th>tags</th> -->
             </tr>
-            {% for user in users %}
+            <!--{% for user in users %}
             <tr>
                 <td>{{ user.first_name }}</td>
                 <td>{{ user.last_name }}</td>
@@ -46,7 +76,7 @@
                   <td>{{ tag.name }}</td>
                 {% endfor %}
             </tr>
-            {% endfor %}
+            {% endfor %}-->
             <br><br>
             <!-- <form action="/action_page.php">
                 <fieldset>
@@ -170,17 +200,16 @@
                 <div class="users-section">
                     <!--<h1 style="text-align: center; text-decoration: underline; font-weight: bold; color: #362312;">Users</h1><br>
                 -->
-                    <!-- Example users -->
-                    <div class="user">
-                        <h3>Student001</h3>
-                        <p>Looking for: 2 collaborators</p>
-                        <p>Tags: Programming, Design</p>
-                    </div>
-                    <div class="user">
-                        <h3>Student002</h3>
-                        <p>Looking for: 5 collaborators</p>
-                        <p>Tags: Art, Creativity</p>
-                    </div>
+                {% for user in users %}
+                <tr>
+                    <td>{{ user.first_name }}</td>
+                    <td>{{ user.last_name }}</td>
+                    <td>{{ user.biography }}</td>
+                    {% for tag in user.tags.all %}
+                      <td>{{ tag.name }}</td>
+                    {% endfor %}
+                </tr>
+                {% endfor %}
             </div>
           </div> <!--end of scroll containers-->
         

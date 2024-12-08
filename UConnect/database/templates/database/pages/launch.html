@@ -21,15 +21,30 @@
             <br><br>
             <form method="post">
               {% csrf_token %}
-              {% for field in form %}
-                  <div class="fieldWrapper">
-                      {{ field.errors }}
-                      {{ field.label_tag }} {{ field }}
-                  </div>
-                  {% endfor %}
-                  <input type = "submit" value="Launch!">
-              </form>
+                <div class="fieldWrapper">
+                {{ form.project_name.label_tag }} {{ form.project_name }}
+             </div>
+            <div class="fieldWrapper">
+               {{ form.num_required.label_tag }} {{ form.num_required }}
+             </div>
+             <div class="fieldWrapper">
+                {{ form.project_length.label_tag }} {{ form.project_length }}
+             </div>
+            <div class="fieldWrapper">
+              {{ form.post_body.label_tag }} {{ form.post_body }}
+            </div>
 
+            <!-- Dropdowns for tags -->
+            <div class="tags-container">
+                <div class="tag-dropdown">{{ form.tag_1.label_tag }} {{ form.tag_1 }}</div>
+                <div class="tag-dropdown">{{ form.tag_2.label_tag }} {{ form.tag_2 }}</div>
+                <div class="tag-dropdown">{{ form.tag_3.label_tag }} {{ form.tag_3 }}</div>
+                <div class="tag-dropdown">{{ form.tag_4.label_tag }} {{ form.tag_4 }}</div>
+                <div class="tag-dropdown">{{ form.tag_5.label_tag }} {{ form.tag_5 }}</div>
+                <div class="tag-dropdown">{{ form.tag_6.label_tag }} {{ form.tag_6 }}</div>
+            </div>
+
+    <input type="submit" value="Launch!">
               
            
         </body>
