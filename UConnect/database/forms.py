@@ -1,7 +1,7 @@
 from django import forms
 from django.forms import ModelForm, Form
 
-from .models import Tag, User, UserPost
+from .models import Tag, User, UserPost, Message
 
 
 class PostForm(ModelForm):
@@ -49,3 +49,9 @@ class FilterForm(ModelForm):
     class Meta:
         model = Tag
         fields = ['tags', 'keywords']
+
+class MessageForm(ModelForm):
+    message_content = forms.CharField(widget=forms.Textarea, required=True, label="Message")
+    class Meta:
+        model = Message
+        fields = ['message_content']

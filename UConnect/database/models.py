@@ -45,15 +45,41 @@ class UserPost(models.Model):  # made this sinfular
         return self.project_name
 
 
-class Conversation(models.Model):
-    post_id = models.ForeignKey(UserPost, on_delete=models.CASCADE)
-    seeker_id = models.ForeignKey(User, on_delete=models.CASCADE)
+class Conversation(models.Model): 
+    post_id = models.ForeignKey(UserPost, on_delete=models.CASCADE, null=True) 
+    seeker_id = models.ForeignKey(User, on_delete=models.CASCADE, null=True, related_name="seeker") #seeker reaching out 
+    launcher_id = models.ForeignKey(User, on_delete=models.CASCADE, null=True, related_name="launcher") #launcher receiving message
+
+    def __str__(self): #return the project name
+        return f"{self.post_id.project_name}"
+
+    def get_message(self): #get all messages in specific conversation
+        return self.message_set.order_by('time_sent')
 
 
 class Message(models.Model):
     conversation_id = models.ForeignKey(Conversation, on_delete=models.CASCADE, null=True)  # Conversation to which it belongs
     sender = models.ForeignKey(User, on_delete=models.CASCADE, null=True, related_name="sent_msg")  # Who sent the message; I think null=True allows null so we don't need a default
     recipient = models.ForeignKey(User, on_delete=models.CASCADE, null=True, related_name="received_msg")  # who received message
-    subject = models.CharField(max_length=255, default="Enter subject line here") 
+    subject = models.CharField(max_length=255, null=True) 
     time_sent = models.DateTimeField()
-    message_content = models.CharField(max_length=600)
+    message_content = models.TextField() #TextField for multiline, better for msg/comment type strings (?)
+
+    def __str__(self):
+        return f"Message from {self.sender} to {self.recipient} at {self.time_sent}"
+
+    def send_message(self, from_sender, to_recipient, message_content, post):
+        conversation, created = Conversation.objects.get_or_create(
+            post_id = post,
+            seeker_id = from_sender,
+            launcher_id = to_recipient
+        )
+        message = Message(
+            conversation_id = conversation,
+            sender = from_sender,
+            recipient = to_recipient,
+            subject = post.project_name, #subject line = project name of post
+            time_sent = timezone.now(),
+            message_content = message_content
+        )
+        message.save()

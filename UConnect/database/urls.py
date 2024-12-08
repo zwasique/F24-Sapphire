@@ -25,5 +25,5 @@ urlpatterns = [
     path('inbox/<int:conversation_id>/', views.inbox, name="view_conversation"),
     path('search/', views.search, name="search"),
     path('account/', views.account , name="account"),
-    path('', views.login, name="login"),
+    path('login/', views.login, name="login"),
 ]
