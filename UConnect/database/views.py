@@ -114,10 +114,10 @@ def search(request):
         tags = request.GET.getlist('tags')
         text = request.GET.get('text')
 
-        posts = UserPost.objects.all()
-        users = User.objects.all()
+        ##posts = UserPost.objects.all()
+        #users = User.objects.all() idk if this is needed
 
-        if tags:
+        """if tags:
             scored_posts = []
             scored_users = []
 
@@ -148,7 +148,23 @@ def search(request):
             start_users = users
 
             posts = [p for p in start_posts if text in p.post_body]
-            users = [u for u in start_users if text in u.biography]
+            users = [u for u in start_users if text in u.biography]"""
+        if tags:
+            tag_list = tags[0].split(",")  # Splitting the tag list from query string
+            posts = posts.filter(tags__name__in=tag_list).distinct()
+            users = users.filter(tags__name__in=tag_list).distinct()
 
-    return render(request, 'database/pages/search.html', {'form': form, 'posts': posts, 'users': users, 'filter_tags': tags, 'filter_text': text})
+        if text:
+            posts = posts.filter(post_body__icontains=text)
+            users = users.filter(biography__icontains=text)
+
+    return render(request, 'database/pages/search.html', {
+        'form': form,
+        'posts': posts,
+        'users': users,
+        'filter_tags': tags,
+        'filter_text': text,
+    })
+#
+ #   return render(request, 'database/pages/search.html', {'form': form, 'posts': posts, 'users': users, 'filter_tags': tags, 'filter_text': text})
 # credit: https://medium.com/@biswajitpanda973/how-to-fetch-all-data-from-database-using-django-87d4e1951931
