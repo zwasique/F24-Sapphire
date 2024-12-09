@@ -23,10 +23,9 @@ class PostForm(ModelForm):
     tag_5 = forms.ModelChoiceField(queryset=Tag.objects.all(), required=False, label="Tag 5")
     tag_6 = forms.ModelChoiceField(queryset=Tag.objects.all(), required=False, label="Tag 6")
     
-    tags = forms.ModelMultipleChoiceField(label="Select up to 6 tags.", queryset=Tag.objects.all(), widget=forms.CheckboxSelectMultiple)
     class Meta:
         model = UserPost
-        fields = ['project_name', 'num_required', 'project_length', 'post_body', 'tags'] # TODO: Currently missing Author, recency score
+        fields = ['project_name', 'num_required', 'project_length', 'post_body', 'tag_1', 'tag_2', 'tag_3', 'tag_4', 'tag_5', 'tag_6'] # TODO: Currently missing Author, recency score
 
 # class for making a user's profile; the forms should get the user's first and last name as well as biography
 class ProfileForm(ModelForm):

@@ -38,17 +38,20 @@ def launch(request):
 
         if form.is_valid():
             post = form.save(commit=False) 
-            post.save() 
 
             tags = [
                 form.cleaned_data[f'tag_{i}'] 
                 for i in range(1, 7) 
                 if form.cleaned_data.get(f'tag_{i}')
             ]
-            post.tags.set(tags) 
+
+            post.save()
+            post.tags.set(tags)
+            print("Post saved.")
 
             return HttpResponseRedirect("../home")
     else:
+        print("INVALID FORM")
         form = PostForm()  # This initializes the form for a GET request.
     return render(request, 'database/pages/launch.html', {"form": form})
 
@@ -74,16 +77,22 @@ def account(request):
 
 #i edited this section be sure to verify before adding to main pls i am not sure if its  a real work and not a my machine only work -tyger
 def search(request):
-    form = FilterForm(request.POST or None)
+    # form = FilterForm(request.POST or None)
     posts = UserPost.objects.all()
     users = User.objects.all()
 
     if request.method == "POST":
         form = FilterForm(request.POST)
 
+
         if form.is_valid():
+            selected_tags = [
+                form.cleaned_data[f'tag_{i}'] 
+                for i in range(1, 7) 
+                if form.cleaned_data.get(f'tag_{i}')
+            ]
             redirect_path = "../search?"
-            selected_tags = form.cleaned_data['tags']
+            # selected_tags = form.cleaned_data['tags']
             search_substring = form.cleaned_data['keywords']
             if selected_tags:
                 redirect_path += "tags=" + ",".join([tag.name for tag in selected_tags]) # TODO: Doesn't properly handle multiple , maybe fixed
@@ -95,7 +104,12 @@ def search(request):
 
             return HttpResponseRedirect(redirect_path)
 
+        else:
+            print("INVALID FORM!")
+            print(form.errors)
+
     else:
+
         form = FilterForm()
         tags = request.GET.getlist('tags')
         text = request.GET.get('text')
