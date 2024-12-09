@@ -28,7 +28,7 @@ class User(
     tags = models.ManyToManyField(Tag, max_length=6)
 
     def __str__(self):
-        return self.school_email
+        return self.first_name + " " + self.last_name
 
 
 class UserPost(models.Model):  # made this sinfular

@@ -19,38 +19,10 @@
         <body>
             <br>
             <h1 style="text-align:center;">Search for posts and users!</h1>
-            
-            <!--Ok i added the dropdowns here as well, im not super versed in this so run some tests or we die 1000 deaths maybe -tyger-->
-            
-
-            <!--i kinda put them together-->
-            
-            <div class="form-container">
-              <form method="post" style="text-align:center;">
-                {% csrf_token %}
-          
-                <!-- Filter by Text -->
-                <!-- <label for="filter_text">Filter by text:</label>
-                <input type="text" id="filter_text" name="filter_text" placeholder="Search by keyword..." value="{{ filter_text }}">
-                <br><br> -->
-          
-                <!-- Filter by Tags -->
-                <!-- <div class="tags-container">
-                  <div class="tag-dropdown">{{ form.tag_1.label_tag }} {{ form.tag_1 }}</div>
-                  <div class="tag-dropdown">{{ form.tag_2.label_tag }} {{ form.tag_2 }}</div>
-                  <div class="tag-dropdown">{{ form.tag_3.label_tag }} {{ form.tag_3 }}</div>
-                  <div class="tag-dropdown">{{ form.tag_4.label_tag }} {{ form.tag_4 }}</div>
-                  <div class="tag-dropdown">{{ form.tag_5.label_tag }} {{ form.tag_5 }}</div>
-                  <div class="tag-dropdown">{{ form.tag_6.label_tag }} {{ form.tag_6 }}</div>
-              </div> -->
-              
-                <br>
-          
-                <!-- should be a shared search -->
-                <!-- <input type="submit" value="Search!"> -->
-              </form>
-            </div>
-            <br>
+            <body>
+              <span class="filter-style"><strong> Filtering by tags: </strong><i>{{ filter_tags }} </i></span>
+              <span class="filter-style"><strong> Filtering by text: </strong><i>{{ filter_text }} </i></span>
+            </span> </body>
 
             <!-- i think we need a div so that we can put this portion on the right side or something -->
             <tr>
@@ -59,25 +31,15 @@
                 {% for field in form %}
                     <div class="fieldWrapper" style="text-align: center;">
                         {{ field.errors }}
-                        {{ field.label_tag }} <br> {{ field }}
+                       <strong> {{ field.label_tag }} </strong><br> {{ field }}
                     </div>
+                    <br>
                     {% endfor %}
+                    <br>
+                    <div class="search-submit-button">
                     <input type = "submit" value="Search!">
+                    </div>
                 </form>
-                <th>USERS:</th>
-                <!-- <th>tags</th> -->
-            </tr>
-            <!--{% for user in users %}
-            <tr>
-                <td>{{ user.first_name }}</td>
-                <td>{{ user.last_name }}</td>
-                <td>{{ user.biography }}</td>
-                {% for tag in user.tags.all %}
-                  <td>{{ tag.name }}</td>
-                {% endfor %}
-            </tr>
-            {% endfor %}-->
-            <br><br>
             <!-- <form action="/action_page.php">
                 <fieldset>
                   <legend>Search</legend>
@@ -170,7 +132,7 @@
                   <input type="submit" value="Search!">
                 </fieldset>
               </form> -->
-              <br><br>
+              <br>
               
               <!--start of containers-->
               <div class="scrollable-container">
@@ -182,14 +144,19 @@
                 <h2>
                 <span class="project-name">{{ post.project_name }}</span>
                 <span class="post-author">Launcher: {{ post.author }}</span>
+                <span class="num-required">{{ post.project_length }} Months</span>
+                <br> <br>
+                
                 <span class="num-required">{{ post.num_required }} Seekers</span>
                 {% for tag in post.tags.all %}
-                  <td>{{ tag.name }}</td>
+                  <span class="tags-style"><td>{{ tag.name }}</td></span>
                 {% endfor %}
                 </h2>
               <div class="post-class">
               {{ post.post_body }}
               </div>
+              <br>
+              <span class="num-required">Posted at: {{ post.publish_datetime }}</span>
                <hr>
                 </div>
              {% endfor %}

@@ -5,14 +5,14 @@ from .models import Tag, User, UserPost
 
 
 class PostForm(ModelForm):
-    project_name = forms.CharField(label="Project Name: ", max_length=50, help_text="Focus on what the project does")
+    project_name = forms.CharField(label="Project Name", max_length=50, help_text="Focus on what the project does")
     num_required = forms.IntegerField(
-        label="Desired Number of Seekers: ", min_value=1, max_value=15, help_text="No more than 15")
+        label="Desired Number of Seekers", min_value=1, max_value=15, help_text="No more than 15")
     project_length = forms.IntegerField(
         label="Expected Project Length(Months)", min_value=0, max_value=24, help_text="Estimated length of project in months") #i added it to say months in the label because it does not show up in help text? idk how that works -Tyger
     # project tags, seeking tags (guys i'm inclined to just have one field for these.)
     post_body = forms.CharField(
-        label="Project Description: ", max_length=4096, help_text="Visit the Home Page if you need an example",
+        label="Project Description", max_length=4096, help_text="Visit the Home Page if you need an example",
         widget=forms.Textarea)
     
     #okay i split the tags here so that it shows up as a drop down again, and set the first one to requiered
