@@ -16,41 +16,11 @@
         <li style="float:right"><a href="/account">My Account</a></li>
 			</ul>
 	</div></nav>
-        <body>
-            <br>
-            <h1 style="text-align:center;">Search for posts and users!</h1>
-            
-            <!--Ok i added the dropdowns here as well, im not super versed in this so run some tests or we die 1000 deaths maybe -tyger-->
-            
-
-            <!--i kinda put them together-->
-            
-            <div class="form-container">
-              <form method="post" style="text-align:center;">
-                {% csrf_token %}
-          
-                <!-- Filter by Text -->
-                <label for="filter_text">Filter by text:</label>
-                <input type="text" id="filter_text" name="filter_text" placeholder="Search by keyword..." value="{{ filter_text }}">
-                <br><br>
-          
-                <!-- Filter by Tags -->
-                <div class="tags-container">
-                  <div class="tag-dropdown">{{ form.tag_1.label_tag }} {{ form.tag_1 }}</div>
-                  <div class="tag-dropdown">{{ form.tag_2.label_tag }} {{ form.tag_2 }}</div>
-                  <div class="tag-dropdown">{{ form.tag_3.label_tag }} {{ form.tag_3 }}</div>
-                  <div class="tag-dropdown">{{ form.tag_4.label_tag }} {{ form.tag_4 }}</div>
-                  <div class="tag-dropdown">{{ form.tag_5.label_tag }} {{ form.tag_5 }}</div>
-                  <div class="tag-dropdown">{{ form.tag_6.label_tag }} {{ form.tag_6 }}</div>
-              </div>
-              
-                <br>
-          
-                <!-- should be a shared search -->
-                <input type="submit" value="Search!">
-              </form>
-            </div>
-            <br>
+      <body>
+          <br>
+          <h1 style="text-align:center;">Search for posts and users!</h1>          
+            <!--Ok i added the dropdowns here as well, im not super versed in this so run some tests or we die 1000 deaths maybe -tyger-->  
+            <br><br>
 
             <!-- i think we need a div so that we can put this portion on the right side or something -->
             <tr>
@@ -62,156 +32,52 @@
                         {{ field.label_tag }} <br> {{ field }}
                     </div>
                     {% endfor %}
-                    <input type = "submit" value="Search!">
-                </form>
-                <th>USERS:</th>
-                <!-- <th>tags</th> -->
-            </tr>
-            <!--{% for user in users %}
-            <tr>
-                <td>{{ user.first_name }}</td>
-                <td>{{ user.last_name }}</td>
-                <td>{{ user.biography }}</td>
-                {% for tag in user.tags.all %}
-                  <td>{{ tag.name }}</td>
-                {% endfor %}
-            </tr>
-            {% endfor %}-->
-            <br><br>
-            <!-- <form action="/action_page.php">
-                <fieldset>
-                  <legend>Search</legend>
-                  <strong>Select Search Tags:</strong><br>
-                  <div class="custom-select-options" style="width=200px">
-                  <select name="tag1">
-                    <option value="none">None</option>
-                    <option value="art">Art</option>
-                    <option value="math">Math</option>
-                    <option value="science">Science</option>
-                    <option value="history">History</option>
-                    <option value="chemistry">Chemistry</option>
-                    <option value="biology">Biology</option>
-                    <option value="calculus">Calculus</option>
-                    <option value="programming">Programming</option>
-                    <option value="research">Research</option>
-                    <option value="writing">Writing</option>
-                    <option value="theater">Theater</option>
-                  </select>
-                  <select name="tag2">
-                    <option value="none">None</option>
-                    <option value="art">Art</option>
-                    <option value="math">Math</option>
-                    <option value="science">Science</option>
-                    <option value="history">History</option>
-                    <option value="chemistry">Chemistry</option>
-                    <option value="biology">Biology</option>
-                    <option value="calculus">Calculus</option>
-                    <option value="programming">Programming</option>
-                    <option value="research">Research</option>
-                    <option value="writing">Writing</option>
-                    <option value="theater">Theater</option>
-                  </select>
-                  <select name="tag3">
-                    <option value="none">None</option>
-                    <option value="art">Art</option>
-                    <option value="math">Math</option>
-                    <option value="science">Science</option>
-                    <option value="history">History</option>
-                    <option value="chemistry">Chemistry</option>
-                    <option value="biology">Biology</option>
-                    <option value="calculus">Calculus</option>
-                    <option value="programming">Programming</option>
-                    <option value="research">Research</option>
-                    <option value="writing">Writing</option>
-                    <option value="theater">Theater</option>
-                  </select>
-                  <select name="tag4">
-                    <option value="none">None</option>
-                    <option value="art">Art</option>
-                    <option value="math">Math</option>
-                    <option value="science">Science</option>
-                    <option value="history">History</option>
-                    <option value="chemistry">Chemistry</option>
-                    <option value="biology">Biology</option>
-                    <option value="calculus">Calculus</option>
-                    <option value="programming">Programming</option>
-                    <option value="research">Research</option>
-                    <option value="writing">Writing</option>
-                    <option value="theater">Theater</option>
-                  </select>
-                  <select name="tag5">
-                    <option value="none">None</option>
-                    <option value="art">Art</option>
-                    <option value="math">Math</option>
-                    <option value="science">Science</option>
-                    <option value="history">History</option>
-                    <option value="chemistry">Chemistry</option>
-                    <option value="biology">Biology</option>
-                    <option value="calculus">Calculus</option>
-                    <option value="programming">Programming</option>
-                    <option value="research">Research</option>
-                    <option value="writing">Writing</option>
-                    <option value="theater">Theater</option>
-                  </select>
-                  <select name="tag6">
-                    <option value="none">None</option>
-                    <option value="art">Art</option>
-                    <option value="math">Math</option>
-                    <option value="science">Science</option>
-                    <option value="history">History</option>
-                    <option value="chemistry">Chemistry</option>
-                    <option value="biology">Biology</option>
-                    <option value="calculus">Calculus</option>
-                    <option value="programming">Programming</option>
-                    <option value="research">Research</option>
-                    <option value="writing">Writing</option>
-                    <option value="theater">Theater</option><br><br>
+                    <div style="text-align: center; margin-top: 20px;">
+                      <input type="submit" value="Search!" style="padding: 10px 20px; font-size: 16px;">
                   </div>
-                  <input type="submit" value="Search!">
-                </fieldset>
-              </form> -->
-              <br><br>
-              
-              <!--start of containers-->
-              <div class="scrollable-container">
-                <!--<h1 style="text-align: center; text-decoration: underline; font-weight: bold; color: #362312;">Posts</h1><br>
-              -->
-                <div class="posts-section">
-                {% for post in posts %}
-                <div class="post">
-                <h2>
-                <span class="project-name">{{ post.project_name }}</span>
-                <span class="post-author">Launcher: {{ post.author }}</span>
-                <span class="num-required">{{ post.num_required }} Seekers</span>
-                {% for tag in post.tags.all %}
-                  <td>{{ tag.name }}</td>
-                {% endfor %}
-                </h2>
-              <div class="post-class">
-              {{ post.post_body }}
+              </form>
+            </tr>
+            <br><br>
+            <!--aria has a user and post set up in front end-->
+             <!--start of containers-->
+             <div class="scrollable-container">
+              <!--<h1 style="text-align: center; text-decoration: underline; font-weight: bold; color: #362312;">Posts</h1><br>
+            -->
+              <div class="posts-section">
+              {% for post in posts %}
+              <div class="post">
+              <h2>
+              <span class="project-name">{{ post.project_name }}</span>
+              <span class="post-author">Launcher: {{ post.author }}</span>
+              <span class="num-required">{{ post.num_required }} Seekers</span>
+              {% for tag in post.tags.all %}
+                <td>{{ tag.name }}</td>
+              {% endfor %}
+              </h2>
+            <div class="post-class">
+            {{ post.post_body }}
+            </div>
+             <hr>
               </div>
-               <hr>
-                </div>
-             {% endfor %}
-            </div>
+           {% endfor %}
+          </div>
 
-
-            <div class="divider"></div> <!--line between the two sections ... tbc to form-->
-                <div class="users-section">
-                    <!--<h1 style="text-align: center; text-decoration: underline; font-weight: bold; color: #362312;">Users</h1><br>
-                -->
-                {% for user in users %}
-                <tr>
-                    <td>{{ user.first_name }}</td>
-                    <td>{{ user.last_name }}</td>
-                    <td>{{ user.biography }}</td>
-                    {% for tag in user.tags.all %}
-                      <td>{{ tag.name }}</td>
-                    {% endfor %}
-                </tr>
-                {% endfor %}
-            </div>
-          </div> <!--end of scroll containers-->
+          <div class="divider"></div> <!--line between the two sections ... tbc to form-->
+            <div class="users-section">
+              <!--<h1 style="text-align: center; text-decoration: underline; font-weight: bold; color: #362312;">Users</h1><br>
+              -->
+              {% for user in users %}
+              <tr>
+                  <td>{{ user.first_name }}</td>
+                  <td>{{ user.last_name }}</td>
+                  <td>{{ user.biography }}</td>
+                  {% for tag in user.tags.all %}
+                    <td>{{ tag.name }}</td>
+                  {% endfor %}
+              </tr>
+              {% endfor %}
+          </div>
+        </div> <!--end of scroll containers-->
         
             </body>
     <nav><div id="footer">

@@ -81,60 +81,88 @@ def search(request):
     if request.method == "POST":
         form = FilterForm(request.POST)
 
-        if form.is_valid():
-            redirect_path = "../search?"
-            selected_tags = form.cleaned_data['tags']
-            search_substring = form.cleaned_data['keywords']
+        if form.is_valid():  # Validate the form first
+            keywords = form.cleaned_data.get('keywords', "")
+            selected_tags = [
+                form.cleaned_data.get(f'tag_{i}')
+                for i in range(1, 7)
+                if form.cleaned_data.get(f'tag_{i}')
+            ]
+
+            # Filter posts and users by tags
             if selected_tags:
-                redirect_path += "tags=" + ",".join([tag.name for tag in selected_tags]) # TODO: Doesn't properly handle multiple , maybe fixed
-                if search_substring:
-                    redirect_path += "&"
-            
-            if search_substring:
-                redirect_path += "text=" + search_substring
+                posts = posts.filter(tags__in=selected_tags).distinct()
+                users = users.filter(tags__in=selected_tags).distinct()
 
-            return HttpResponseRedirect(redirect_path)
+            # Filter by text
+            if keywords:
+                posts = posts.filter(post_body__icontains=keywords)
+                users = users.filter(biography__icontains=keywords)
 
-    else:
-        form = FilterForm()
-        tags = request.GET.getlist('tags')
-        text = request.GET.get('text')
+    return render(request, 'database/pages/search.html', {
+        'form': form,
+        'posts': posts,
+        'users': users,
+    })
+        #if form.is_valid():
+         #if selected_tags:
+          #      redirect_path += "tags=" + ",".join([tag.name for tag in selected_tags]) # TODO: Doesn't properly handle multiple , maybe fixed
+           #     if search_substring:
+            #        redirect_path += "&"
+            #
+       #     if search_substring:
+        #        redirect_path += "text=" + search_substring
 
-        posts = UserPost.objects.all()
-        users = User.objects.all()
+         #   return HttpResponseRedirect(redirect_path)
 
-        if tags:
-            scored_posts = []
-            scored_users = []
+   # else:
+    #    form = FilterForm()
+     #   tags = request.GET.getlist('tags')
+      #  text = request.GET.get('text')
 
-            for post in posts:
-                hit_count = 0
-                for tag in post.tags.all():
-                    if tag.name in(tags):
-                        hit_count += 1
-                if hit_count >= 1:
-                    scored_posts.append((post, hit_count))
+       # posts = UserPost.objects.all()
+        #users = User.objects.all()
 
-            for user in users:
-                hit_count = 0
-                for tag in user.tags.all():
-                    if tag.name in(tags):
-                        hit_count += 1
-                if hit_count >= 1:
-                    scored_users.append((user, hit_count))
+    #    if tags:
+     #       scored_posts = []
+      #      scored_users = []
 
-            scored_posts.sort(key=lambda x: x[1], reverse=True)
-            posts = [p[0] for p in scored_posts]
+       #     for post in posts:
+        #        hit_count = 0
+         #       for tag in post.tags.all():
+          #          if tag.name in(tags):
+           #             hit_count += 1
+            #    if hit_count >= 1:
+             #       scored_posts.append((post, hit_count))
 
-            scored_users.sort(key=lambda x: x[1], reverse=True)
-            users = [u[0] for u in scored_users]
+          #  for user in users:
+           #     hit_count = 0
+            #    for tag in user.tags.all():
+             #       if tag.name in(tags):
+              #          hit_count += 1
+       #         if hit_count >= 1:
+        #            scored_users.append((user, hit_count))
+
+         #   scored_posts.sort(key=lambda x: x[1], reverse=True)
+          #  posts = [p[0] for p in scored_posts]
+
+           # scored_users.sort(key=lambda x: x[1], reverse=True)
+       #     users = [u[0] for u in scored_users]
         
-        if text:
-            start_posts = posts
-            start_users = users
+   #     if text:
+    #        start_posts = posts
+     #       start_users = users
 
-            posts = [p for p in start_posts if text in p.post_body]
-            users = [u for u in start_users if text in u.biography]
+      #      posts = [p for p in start_posts if text in p.post_body]
+       #     users = [u for u in start_users if text in u.biography]
 
-    return render(request, 'database/pages/search.html', {'form': form, 'posts': posts, 'users': users, 'filter_tags': tags, 'filter_text': text})
+    #return render(request, 'database/pages/search.html', {'form': form, 'posts': posts, 'users': users, 'filter_tags': tags, 'filter_text': text})
+
+
+
+
+
+
+
+
 # credit: https://medium.com/@biswajitpanda973/how-to-fetch-all-data-from-database-using-django-87d4e1951931
