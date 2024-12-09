@@ -17,18 +17,24 @@ def posts(request):
 def inbox(request):
     return render(request, 'database/pages/inbox.html')
 
-
+#editing this also basically copied from my other code just for looks, might work ?-tyger 
 def signup(request):
     if request.method == "POST":
         form = ProfileForm(request.POST)
 
         if form.is_valid():
-            form.save()
-            return HttpResponseRedirect("../home") #will redirect to the home page if form is valid, however, this doesn't work right now
-        
+            user = form.save(commit=False)
+            tags = [
+                form.cleaned_data[f'tag_{i}']
+                for i in range(1, 7)
+                if form.cleaned_data.get(f'tag_{i}')
+            ]
+            user.save()  
+            user.tags.set(tags)  
+            return HttpResponseRedirect("../home")
     else:
         form = ProfileForm()
-    
+
     return render(request, "database/pages/signup.html", {"form": form})
 
  #i edited this section be sure to verify before adding to main pls i am not sure if its  a real work and not a my machine only work -tyger

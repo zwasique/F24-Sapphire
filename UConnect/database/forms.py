@@ -28,17 +28,24 @@ class PostForm(ModelForm):
         fields = ['project_name', 'num_required', 'project_length', 'post_body', 'tag_1', 'tag_2', 'tag_3', 'tag_4', 'tag_5', 'tag_6'] # TODO: Currently missing Author, recency score
 
 # class for making a user's profile; the forms should get the user's first and last name as well as biography
+#making dropdown, guess the database stuff doesnt super matter lol
 class ProfileForm(ModelForm):
     school_email = forms.EmailField()
     password = forms.CharField(widget=forms.PasswordInput)
     first_name = forms.CharField(label="First name", max_length=50)
     last_name = forms.CharField(label="Last name", max_length=50)
     biography = forms.CharField(label="Biography", widget=forms.Textarea)
-    tags = forms.ModelMultipleChoiceField(label="Select up to 6 tags.", queryset=Tag.objects.all(), widget=forms.CheckboxSelectMultiple)
-    #to do: implement tag limit
+    # Individual dropdowns for tags
+    tag_1 = forms.ModelChoiceField(queryset=Tag.objects.all(), required=True, label="Tag 1")
+    tag_2 = forms.ModelChoiceField(queryset=Tag.objects.all(), required=False, label="Tag 2")
+    tag_3 = forms.ModelChoiceField(queryset=Tag.objects.all(), required=False, label="Tag 3")
+    tag_4 = forms.ModelChoiceField(queryset=Tag.objects.all(), required=False, label="Tag 4")
+    tag_5 = forms.ModelChoiceField(queryset=Tag.objects.all(), required=False, label="Tag 5")
+    tag_6 = forms.ModelChoiceField(queryset=Tag.objects.all(), required=False, label="Tag 6")
+
     class Meta:
         model = User
-        fields = ['school_email', 'password', 'first_name', 'last_name', 'biography', 'tags']
+        fields = ['school_email', 'password', 'first_name', 'last_name', 'biography', 'tag_1', 'tag_2', 'tag_3', 'tag_4', 'tag_5', 'tag_6']
 
 
 class AccountForm(ModelForm):
