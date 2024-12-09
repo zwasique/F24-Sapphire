@@ -250,3 +250,30 @@ th, td {
     padding-bottom: 10px;
     border-bottom: 1px solid #ccc; 
 }
+
+/* === TAG CONTAINER FOR LAUNCH ONLY??? === */
+
+.tags-container {
+    display: flex;
+    justify-content: space-between;
+    gap: 5px; /* Space between dropdns doesnt need to be that much i think? like they should be friends*/
+    margin-top: 10px;
+}
+
+/* Individual dropdowns */
+.tag-dropdown select {
+    width: 100%;
+    padding: 5px;
+    font-size: 16px;
+    border: 2px solid #362312;
+    border-radius: 5px;
+    background-color: #FFFFFF;
+    color: #25170a;
+}
+
+.tag-dropdown select:focus {
+    border-color: #8d7260;
+    outline: none;
+}
+
+/* === TAG CONTAINER FOR SEARCH  === */
